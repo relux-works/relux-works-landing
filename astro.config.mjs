@@ -7,7 +7,7 @@ export default defineConfig({
     locales: ['en', 'ru', 'hy', 'ka'],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
   },
 });
