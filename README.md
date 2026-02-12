@@ -1,43 +1,59 @@
-# Astro Starter Kit: Minimal
+# Relux Works — Landing Page
 
-```sh
-npm create astro@latest -- --template minimal
+Landing page for [Relux Works](https://relux.works) — agentic studio registered in Armenia.
+
+## Stack
+
+- **Astro 5** — static site generator
+- **YAML** — localization (`locales/`)
+- **CSS** — custom properties, no frameworks
+
+## Languages
+
+| Path | Language |
+|------|----------|
+| `/en/` | English |
+| `/ru/` | Russian |
+| `/hy/` | Armenian |
+| `/ka/` | Georgian |
+
+## Commands
+
+```
+make           # show available commands
+make install   # install dependencies
+make dev       # start dev server
+make build     # production build → dist/
+make preview   # preview production build
+make clean     # remove dist/, .astro/, node_modules/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+locales/           # YAML translation files (en, ru, hy, ka)
+public/            # static assets (favicon, logo SVG)
+src/
+  components/      # Astro components (Header, Hero, Services, etc.)
+  i18n/utils.ts    # i18n helper — t(lang, 'key'), locale paths
+  layouts/         # base HTML layout
+  pages/           # routes: /, /en/, /ru/, /hy/, /ka/
+  styles/
+    palette.css    # color palette (CSS custom properties)
+    global.css     # reset, typography, utilities
+.scripts/          # shell scripts (build, dev, preview, clean)
+.spec/             # project spec
+.task-board/       # task tracking
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Palette
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+All colors are CSS custom properties in `src/styles/palette.css`. To retheme, edit that file — everything else inherits.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Tools
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Tool | Purpose | Command |
+|------|---------|---------|
+| Astro | SSG build | `make build` |
+| js-yaml | YAML locale loading | used at build time |
+| task-board | project tracking | `task-board summary` |
