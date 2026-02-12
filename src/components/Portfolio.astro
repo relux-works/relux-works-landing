@@ -12,11 +12,19 @@ const projects = [
     key: 'tnl',
     link: 'https://apps.apple.com/us/app/t-l-learn-foreign-words/id548917415',
     platform: 'appstore' as const,
+    icon: null,
   },
   {
     key: 'tundra',
     link: 'https://testflight.apple.com/join/TGyPY5G2',
     platform: 'testflight' as const,
+    icon: null,
+  },
+  {
+    key: 'waio',
+    link: 'https://testflight.apple.com/join/JDN4XVb7',
+    platform: 'testflight' as const,
+    icon: '/waio-recorder-icon.svg',
   },
 ] as const;
 ---
@@ -35,6 +43,11 @@ const projects = [
           class={`portfolio-card portfolio-card--${project.key}`}
         >
           <div class="card-content">
+            {project.icon && (
+              <div class="card-icon-wrap">
+                <img src={project.icon} alt={`${t(lang, `portfolio.${project.key}.title`)} icon`} class="card-icon" loading="lazy" />
+              </div>
+            )}
             <h3 class="card-title">{t(lang, `portfolio.${project.key}.title`)}</h3>
             <p class="card-description">{t(lang, `portfolio.${project.key}.description`)}</p>
           </div>
@@ -124,6 +137,20 @@ const projects = [
     );
   }
 
+  .portfolio-card--waio {
+    background: var(--color-surface);
+  }
+
+  .portfolio-card--waio::before {
+    background: linear-gradient(
+      135deg,
+      #5f64d6 0%,
+      #8e90dd 55%,
+      #b6b3e7 100%
+    );
+    opacity: 0.16;
+  }
+
   .portfolio-card:hover {
     border-color: var(--color-accent);
     box-shadow: 0 0 24px rgba(233, 69, 96, 0.1);
@@ -135,6 +162,23 @@ const projects = [
     position: relative;
     z-index: 1;
     margin-bottom: var(--space-lg);
+  }
+
+  .card-icon-wrap {
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 20px rgba(37, 40, 103, 0.22);
+  }
+
+  .card-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
   }
 
   .card-title {

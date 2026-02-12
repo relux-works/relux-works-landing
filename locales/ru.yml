@@ -51,6 +51,10 @@ portfolio:
     title: Tundra Clans
     description: Пошаговая стратегия на тайлах. Сейчас в бета-тестировании.
     badge: TestFlight
+  waio:
+    title: Waio Recorder
+    description: Приложение для macOS, которое записывает аудио из любого приложения, включая встречи в Zoom и Google Meet.
+    badge: TestFlight
 
 about:
   title: О нас

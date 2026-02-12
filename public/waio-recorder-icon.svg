@@ -1,0 +1,11 @@
+<svg width="768" height="768" viewBox="0 0 768 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="768" height="768" fill="url(#waioGradient)"/>
+  <circle cx="384" cy="384" r="191.5" stroke="#F3F3F6" stroke-width="30"/>
+  <circle cx="384" cy="384" r="74" fill="#E7E7EC"/>
+  <defs>
+    <linearGradient id="waioGradient" x1="384" y1="768" x2="384" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5D61D8"/>
+      <stop offset="1" stop-color="#9B9CE1"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -51,6 +51,10 @@ portfolio:
     title: Tundra Clans
     description: Թայլերով ռազմավարական խաղ։ Այժմ բետա փուլում է։
     badge: TestFlight
+  waio:
+    title: Waio Recorder
+    description: macOS հավելված, որը ձայն է ձայնագրում ցանկացած հավելվածից, այդ թվում Zoom և Google Meet հանդիպումներից։
+    badge: TestFlight
 
 about:
   title: Մեր մասին

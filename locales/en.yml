@@ -51,6 +51,10 @@ portfolio:
     title: Tundra Clans
     description: Tile-based strategy game. Currently in beta.
     badge: TestFlight
+  waio:
+    title: Waio Recorder
+    description: macOS app that records audio from any app, including Zoom and Google Meet meetings.
+    badge: TestFlight
 
 about:
   title: About Us

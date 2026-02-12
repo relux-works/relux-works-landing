@@ -51,6 +51,10 @@ portfolio:
     title: Tundra Clans
     description: ფილაზე დაფუძნებული სტრატეგიული თამაში. ამჟამად ბეტა ტესტირებაში.
     badge: TestFlight
+  waio:
+    title: Waio Recorder
+    description: macOS აპი, რომელიც აუდიოს იწერს ნებისმიერი აპიდან, მათ შორის Zoom და Google Meet შეხვედრებიდან.
+    badge: TestFlight
 
 about:
   title: ჩვენს შესახებ
