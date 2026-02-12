@@ -23,6 +23,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html[lang='hy'] body {
+  font-family:
+    'Noto Sans Armenian', 'Inter',
+    system-ui, -apple-system, sans-serif;
+}
+
+html[lang='ka'] body {
+  font-family:
+    'Noto Sans Georgian', 'Inter',
+    system-ui, -apple-system, sans-serif;
+}
+
 a {
   color: var(--color-link);
   text-decoration: none;

@@ -6,89 +6,89 @@ nav:
   contact: Կապ
 
 hero:
-  title: Agentային Ստուդիա
-  subtitle: Մobil հavելվdelays և servays-ի մշakoutyun և distribuciya
-  cta_primary: Կdelays delays delays
-  cta_secondary: Relux Էdelays delays
+  title: Ագենտային ստուդիա
+  subtitle: Մոբայլ հավելվածների և ծառայությունների մշակում և տարածում
+  cta_primary: Կապ հաստատել
+  cta_secondary: Relux էկոհամակարգ
 
 services:
-  title: Ինdelays delays Eightsendelays
-  subtitle: AI-first delays Eightsproductsdelays
+  title: Ինչ ենք անում
+  subtitle: Ստեղծում ենք պրոդուկտներ AI-first մոտեցմամբ
   product:
-    title: Delays Eightsproductdelays
-    description: Delays Eightsproductdelays — conceptdelays launchdelays. Mobile, web delays cross-platform delays.
+    title: Պրոդուկտների զարգացում
+    description: Հավելվածների լիարժեք զարգացում՝ կոնցեպտից մինչև թողարկում։ Մոբայլ, վեբ և կросս-պլատֆորմ լուծումներ՝ երկարաժամկետ օգտագործման համար։
   agents:
-    title: AI delays agentdelays
-    description: AI-agentdelays delays primary engineering force. Designdelays, builddelays delays orchestratedelays autonomous agent systems.
+    title: AI և ագենտային ինժեներիա
+    description: AI-ագենտները՝ որպես հիմնական ինժեներական ուժ։ Նախագծում ենք, կառուցում և օրկեստրացնում ինքնավար ագենտային համակարգեր իրական խնդիրների համար։
   architecture:
-    title: Delays Eightsarchitecturedelays
-    description: Flux/Redux patterndelays predictable state management. Type-safe, modular architectures delays Swift.
+    title: Ճարտարապետություն և խորհրդատվություն
+    description: Flux/Redux մոտեցմամբ կանխատեսելի state management։ Type-safe, մոդուլային ճարտարապետություններ՝ Swift-ի համար և ոչ միայն։
 
 ecosystem:
-  title: Relux Էdelays
-  subtitle: Open, modular, agent-first developer tools delays Swift
-  description: State containers, middleware delays developer tools delays type-safe, predictable data flow. Designed delays Swift delays agent-driven development.
-  cta: GitHub
+  title: Relux էկոհամակարգ
+  subtitle: Բաց, մոդուլային, agent-first գործիքներ Swift մշակողների համար
+  description: State container-ների, middleware-ի և developer tool-ների աճող էկոհամակարգ՝ հիմնված type-safe և կանխատեսելի տվյալների հոսքի վրա։ Ստեղծված է Swift-ի հետ միասին զարգանալու և բնականորեն ինտեգրվելու ագենտային մշակման մեջ։
+  cta: Դիտել GitHub-ում
   features:
     state:
-      title: State Containers
-      description: Predictable, type-safe state management delays modern Swift
+      title: State կոնտեյներներ
+      description: Կանխատեսելի, type-safe state management՝ ստեղծված ժամանակակից Swift-ի համար
     middleware:
       title: Middleware
-      description: Composable middleware layer delays side effects, logging delays agent integration
+      description: Կոմպոզիցիոն middleware շերտ՝ side effects-ի, լոգավորման և ագենտների ինտեգրացիայի համար
     tools:
-      title: Developer Tools
-      description: Debugging, time-travel delays inspection tools delays Relux-powered apps
+      title: Developer գործիքներ
+      description: Debugging, time-travel և inspection գործիքներ Relux-ով աշխատող հավելվածների համար
 
 portfolio:
-  title: "[MOCK] Պdelays"
-  subtitle: "[MOCK] Productsdelays delays delays"
+  title: Պորտֆոլիո
+  subtitle: Պրոդուկտներ, որոնք ստեղծել և թողարկել ենք
   tnl:
     title: "T&L \u2013 Learn Foreign Words"
-    description: "[MOCK] Education app delays vocabulary learning delays visuals, audio delays text. 7 languages. Award-winning (Children's Technology Review 2013). Developer — Ivan Oparin."
+    description: "Կրթական հավելված՝ բառապաշար սովորելու համար՝ պատկերների, ձայնի և տեքստի միջոցով։ Աջակցում է 7 լեզու։ Մրցանակակիր (Children's Technology Review 2013)։ Մշակող — Ivan Oparin։"
     badge: App Store
   tundra:
     title: Tundra Clans
-    description: "[MOCK] Tile-based strategy game. Currently delays beta."
+    description: Թայլերով ռազմավարական խաղ։ Այժմ բետա փուլում է։
     badge: TestFlight
 
 about:
-  title: Մdelay Մdelays
-  subtitle: Delays 2026 delays Hayastanum
-  description: Relux Works — lean, bootstrapped studio. Predictable architecture delays agentic tooling delays together.
+  title: Մեր մասին
+  subtitle: Հիմնադրվել է 2026 թվականին Հայաստանում
+  description: Relux Works-ը փոքր, bootstrapped ստուդիա է։ Մենք հավատում ենք, որ կանխատեսելի ճարտարապետությունն ու ագենտային գործիքակազմը պետք է լինեն միասին — և մենք կառուցում ենք երկուսն էլ։
   stats:
     founded: "2026"
-    founded_label: Հdelays
-    location: Ծdelays, Հdelays
-    location_label: Delays
+    founded_label: Հիմնադրվել է
+    location: Ծաղկաձոր, Հայաստան
+    location_label: Տեղակայություն
     team: 2–10
-    team_label: Delays
-    focus: Swift delays AI
-    focus_label: Delays
+    team_label: Թիմի չափը
+    focus: Swift և AI
+    focus_label: Ուղղություն
 
 community:
-  title: Համdelays
-  subtitle: Open contribution, shared knowledge
-  description: Open-source contribution, technical discussions delays shared knowledge. Join us delays agentic development.
+  title: Համայնք
+  subtitle: Բաց մասնակցություն, ընդհանուր գիտելիք
+  description: Մենք միավորում ենք մշակողներին՝ open-source ներդրումների, տեխնիկական քննարկումների և գիտելիքի փոխանակման միջոցով։ Միացեք մեզ՝ ագենտային մշակման ապագան կառուցելու համար։
   github: GitHub
   telegram: Telegram
-  discussions: Delays
+  discussions: Քննարկումներ
 
 contact:
-  title: Կdelays delays
-  subtitle: Delays delays delays together
+  title: Կապ
+  subtitle: Եկեք միասին ինչ-որ բան կառուցենք
   email: ivan@relux.works
-  email_label: Delays delays
+  email_label: Գրեք մեզ
   form:
-    name: Delays delays
-    email: Delays email
-    message: Delays delays project
-    send: Delays
+    name: Ձեր անունը
+    email: Ձեր էլ․ փոստը
+    message: Պատմեք ձեր նախագծի մասին
+    send: Ուղարկել
 
 footer:
-  company: "« DELAYS WORKS» ΅ΤΠΩ"
-  registration: "Delays: 999.110.1559507"
-  tax_id: "Հdelays: 03036828"
-  address: "Delays Eightsdelays delays. 19, Ծdelays, Կdelays, Delays 2310"
-  copyright: "© 2026 Relux Works. Delays delays delays."
-  privacy: Delays delays
+  company: "RELUX WORKS ՍՊԸ"
+  registration: "Գրանց.: 999.110.1559507"
+  tax_id: "ՀՎՀՀ: 03036828"
+  address: "Օրբելի եղբայրների փ. 19, Ծաղկաձոր, Կոտայք, Հայաստան 2310"
+  copyright: "© 2026 Relux Works. Բոլոր իրավունքները պաշտպանված են."
+  privacy: Գաղտնիության քաղաքականություն
