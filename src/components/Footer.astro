@@ -1,0 +1,165 @@
+---
+import { t, type Lang, languages, langLabels, getLocalePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const pathWithoutLang = currentPath.replace(/^\/(en|ru|hy|ka)/, '') || '/';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-legal">
+        <span class="footer-company">{t(lang, 'footer.company')}</span>
+        <span class="footer-sep" aria-hidden="true">&middot;</span>
+        <span>{t(lang, 'footer.registration')}</span>
+        <span class="footer-sep" aria-hidden="true">&middot;</span>
+        <span>{t(lang, 'footer.tax_id')}</span>
+      </div>
+
+      <p class="footer-address">{t(lang, 'footer.address')}</p>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span class="footer-copyright">{t(lang, 'footer.copyright')}</span>
+          <a href="#" class="footer-privacy">{t(lang, 'footer.privacy')}</a>
+        </div>
+
+        <nav class="lang-switcher" aria-label="Language switcher">
+          {languages.map((l) => (
+            <a
+              href={getLocalePath(l, pathWithoutLang)}
+              class:list={['lang-link', { active: l === lang }]}
+              aria-current={l === lang ? 'page' : undefined}
+            >
+              {langLabels[l]}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+    padding: var(--space-xl) 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-company {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .footer-sep {
+    color: var(--color-border-light);
+    user-select: none;
+  }
+
+  .footer-address {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-bottom-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-lg);
+  }
+
+  .footer-copyright {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-privacy {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-privacy:hover {
+    color: var(--color-accent);
+  }
+
+  /* -- Language switcher -- */
+  .lang-switcher {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .lang-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .lang-link:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-light);
+    background: var(--color-surface);
+  }
+
+  .lang-link.active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: rgba(233, 69, 96, 0.08);
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .footer-legal {
+      flex-wrap: nowrap;
+    }
+
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+</style>

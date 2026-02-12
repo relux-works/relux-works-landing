@@ -1,0 +1,48 @@
+:root {
+  /* Brand */
+  --color-primary: #1a1a2e;
+  --color-primary-light: #2d2d4a;
+  --color-accent: #e94560;
+  --color-accent-hover: #d63851;
+
+  /* Surfaces */
+  --color-bg: #0f0f1a;
+  --color-bg-alt: #161625;
+  --color-surface: #1a1a2e;
+  --color-surface-hover: #242442;
+
+  /* Text */
+  --color-text: #eaeaea;
+  --color-text-secondary: #a0a0b8;
+  --color-text-muted: #6b6b80;
+
+  /* Borders */
+  --color-border: #2a2a45;
+  --color-border-light: #3a3a55;
+
+  /* Semantic */
+  --color-success: #4ade80;
+  --color-link: #7c8cf8;
+  --color-link-hover: #9ba6fa;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 4rem;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}

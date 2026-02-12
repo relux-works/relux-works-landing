@@ -1,0 +1,94 @@
+nav:
+  services: Услуги
+  ecosystem: Экосистема
+  about: О нас
+  community: Сообщество
+  contact: Контакты
+
+hero:
+  title: Агентная Студия
+  subtitle: Разработка и дистрибуция мобильных приложений и сервисов
+  cta_primary: Связаться с нами
+  cta_secondary: Экосистема Relux
+
+services:
+  title: Что мы делаем
+  subtitle: Создаём продукты с AI-first подходом
+  product:
+    title: Разработка продуктов
+    description: Полный цикл разработки приложений — от концепции до запуска. Мобильные, веб и кросс-платформенные решения.
+  agents:
+    title: AI и агентная инженерия
+    description: AI-агенты как основная инженерная сила. Проектируем, создаём и оркестрируем автономные агентные системы для реальных задач.
+  architecture:
+    title: Архитектура и консалтинг
+    description: Предсказуемое управление состоянием на основе Flux/Redux паттернов. Типобезопасные модульные архитектуры для Swift и не только.
+
+ecosystem:
+  title: Экосистема Relux
+  subtitle: Открытые, модульные, agent-first инструменты для Swift-разработчиков
+  description: Растущая экосистема контейнеров состояния, middleware и инструментов разработки на основе типобезопасного, предсказуемого потока данных. Создана для эволюции вместе со Swift и естественной интеграции с агентной разработкой.
+  cta: Смотреть на GitHub
+  features:
+    state:
+      title: Контейнеры состояния
+      description: Предсказуемое, типобезопасное управление состоянием для современного Swift
+    middleware:
+      title: Middleware
+      description: Компонуемый слой middleware для side effects, логирования и интеграции агентов
+    tools:
+      title: Инструменты разработчика
+      description: Отладка, time-travel и инспекция для приложений на Relux
+
+portfolio:
+  title: Портфолио
+  subtitle: Продукты, которые мы создали и выпустили
+  tnl:
+    title: "T&L \u2013 Learn Foreign Words"
+    description: Образовательное приложение для изучения слов через визуальные образы, аудио и текст. Поддержка 7 языков. Победитель Children's Technology Review 2013. Разработчик — Иван Опарин.
+    badge: App Store
+  tundra:
+    title: Tundra Clans
+    description: Пошаговая стратегия на тайлах. Сейчас в бета-тестировании.
+    badge: TestFlight
+
+about:
+  title: О нас
+  subtitle: Основана в 2026 году в Армении
+  description: Relux Works — компактная бутстрап-студия. Мы верим, что предсказуемая архитектура и агентные инструменты должны идти вместе — и мы строим оба направления.
+  stats:
+    founded: "2026"
+    founded_label: Основана
+    location: Цахкадзор, Армения
+    location_label: Локация
+    team: 2–10
+    team_label: Команда
+    focus: Swift и AI
+    focus_label: Фокус
+
+community:
+  title: Сообщество
+  subtitle: Открытый вклад, общие знания
+  description: Мы объединяем разработчиков через open-source контрибуцию, технические дискуссии и обмен знаниями. Присоединяйтесь к нам в создании будущего агентной разработки.
+  github: GitHub
+  telegram: Telegram
+  discussions: Обсуждения
+
+contact:
+  title: Свяжитесь с нами
+  subtitle: Давайте создадим что-то вместе
+  email: ivan@relux.works
+  email_label: Написать нам
+  form:
+    name: Ваше имя
+    email: Ваш email
+    message: Расскажите о вашем проекте
+    send: Отправить
+
+footer:
+  company: "RELUX WORKS ООО"
+  registration: "Рег.: 999.110.1559507"
+  tax_id: "ИНН: 03036828"
+  address: "ул. Братьев Орбели 19, Цахкадзор, Котайк, Армения 2310"
+  copyright: "© 2026 Relux Works. Все права защищены."
+  privacy: Политика конфиденциальности

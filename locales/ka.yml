@@ -1,0 +1,94 @@
+nav:
+  services: სერვისები
+  ecosystem: ეკოსისტემა
+  about: ჩვენს შესახებ
+  community: საზოგადოება
+  contact: კონტაქტი
+
+hero:
+  title: აგენტური სტუდია
+  subtitle: მობილური აპლიკაციებისა და სერვისების შემუშავება და დისტრიბუცია
+  cta_primary: დაგვიკავშირდით
+  cta_secondary: Relux ეკოსისტემა
+
+services:
+  title: რას ვაკეთებთ
+  subtitle: ვქმნით პროდუქტებს AI-first მიდგომით
+  product:
+    title: პროდუქტის განვითარება
+    description: აპლიკაციების სრული ციკლის განვითარება — კონცეფციიდან გაშვებამდე. მობილური, ვებ და კროს-პლატფორმული გადაწყვეტები.
+  agents:
+    title: AI და აგენტური ინჟინერია
+    description: AI-აგენტები როგორც ძირითადი საინჟინრო ძალა. ავტონომიური აგენტური სისტემების დაპროექტება, შექმნა და ორკესტრაცია.
+  architecture:
+    title: არქიტექტურა და კონსალტინგი
+    description: Flux/Redux პატერნებზე დაფუძნებული პროგნოზირებადი state management. Type-safe, მოდულარული არქიტექტურები Swift-ისთვის.
+
+ecosystem:
+  title: Relux ეკოსისტემა
+  subtitle: ღია, მოდულარული, agent-first ინსტრუმენტები Swift დეველოპერებისთვის
+  description: State container-ების, middleware-ისა და დეველოპერ ინსტრუმენტების მზარდი ეკოსისტემა, type-safe და პროგნოზირებად მონაცემთა ნაკადზე აგებული.
+  cta: GitHub-ზე ნახვა
+  features:
+    state:
+      title: State Containers
+      description: პროგნოზირებადი, type-safe state management თანამედროვე Swift-ისთვის
+    middleware:
+      title: Middleware
+      description: კომპოზირებადი middleware ფენა side effects, ლოგირებისა და აგენტების ინტეგრაციისთვის
+    tools:
+      title: დეველოპერ ინსტრუმენტები
+      description: Debugging, time-travel და ინსპექციის ინსტრუმენტები Relux აპლიკაციებისთვის
+
+portfolio:
+  title: პორტფოლიო
+  subtitle: პროდუქტები, რომლებიც შევქმენით და გამოვუშვით
+  tnl:
+    title: "T&L \u2013 Learn Foreign Words"
+    description: საგანმანათლებლო აპლიკაცია ლექსიკის სწავლისთვის ვიზუალური, აუდიო და ტექსტური მასალით. 7 ენის მხარდაჭერა. Children's Technology Review 2013-ის გამარჯვებული. დეველოპერი — Ivan Oparin.
+    badge: App Store
+  tundra:
+    title: Tundra Clans
+    description: ფილაზე დაფუძნებული სტრატეგიული თამაში. ამჟამად ბეტა ტესტირებაში.
+    badge: TestFlight
+
+about:
+  title: ჩვენს შესახებ
+  subtitle: დაფუძნებულია 2026 წელს სომხეთში
+  description: Relux Works — კომპაქტური ვენჩურ სტუდია. ჩვენ გვჯერა, რომ პროგნოზირებადი არქიტექტურა და აგენტური ინსტრუმენტები ერთად უნდა იყოს — და ორივეს ვაშენებთ.
+  stats:
+    founded: "2026"
+    founded_label: დაფუძნდა
+    location: ცახკაძორ, სომხეთი
+    location_label: მდებარეობა
+    team: 2–10
+    team_label: გუნდი
+    focus: Swift & AI
+    focus_label: ფოკუსი
+
+community:
+  title: საზოგადოება
+  subtitle: ღია წვლილი, გაზიარებული ცოდნა
+  description: ჩვენ ვაერთიანებთ დეველოპერებს ღია კოდის კონტრიბუციის, ტექნიკური დისკუსიებისა და ცოდნის გაზიარების მეშვეობით.
+  github: GitHub
+  telegram: Telegram
+  discussions: დისკუსიები
+
+contact:
+  title: დაგვიკავშირდით
+  subtitle: მოდი, ერთად შევქმნათ რაღაც
+  email: ivan@relux.works
+  email_label: მოგვწერეთ
+  form:
+    name: თქვენი სახელი
+    email: თქვენი ელფოსტა
+    message: მოგვიყევით თქვენი პროექტის შესახებ
+    send: გაგზავნა
+
+footer:
+  company: "RELUX WORKS LLC"
+  registration: "რეგ.: 999.110.1559507"
+  tax_id: "საგ. ID: 03036828"
+  address: "ორბელი ძმების ქ. 19, ცახკაძორ, კოტაიქ, სომხეთი 2310"
+  copyright: "© 2026 Relux Works. ყველა უფლება დაცულია."
+  privacy: კონფიდენციალურობის პოლიტიკა

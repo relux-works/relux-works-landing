@@ -1,0 +1,431 @@
+---
+import { t, type Lang, languages, langLabels, getLocalePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const navItems = [
+  { key: 'nav.services', anchor: '#services' },
+  { key: 'nav.ecosystem', anchor: '#ecosystem' },
+  { key: 'nav.about', anchor: '#about' },
+  { key: 'nav.community', anchor: '#community' },
+  { key: 'nav.contact', anchor: '#contact' },
+] as const;
+---
+
+<header class="header" id="site-header">
+  <div class="container header-inner">
+    <a href={getLocalePath(lang)} class="logo" aria-label="Relux Works home">
+      <svg class="logo-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <ellipse cx="32" cy="32" rx="28" ry="10" transform="rotate(-25 32 32)" class="logo-orbit"/>
+        <ellipse cx="32" cy="32" rx="28" ry="10" transform="rotate(25 32 32)" class="logo-orbit"/>
+        <path d="M16 10 H36 C48 10 48 34 36 34 L48 54 L38 54 L26 40 V54 H16 Z M26 18 H34 C40 18 40 26 34 26 H26 Z"
+              fill="currentColor" fill-rule="evenodd"/>
+        <circle cx="42" cy="16" r="3.5" class="logo-dot"/>
+      </svg>
+      <span class="logo-text">Relux Works</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </label>
+
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        {navItems.map(({ key, anchor }) => (
+          <li>
+            <a href={anchor} class="nav-link">{t(lang, key)}</a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="header-actions">
+        <!-- Language switcher -->
+        <div class="lang-switcher">
+          <button
+            class="lang-current"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            {langLabels[lang]}
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox" aria-label="Select language">
+            {languages.map((l) => (
+              <li role="option" aria-selected={l === lang}>
+                <a
+                  href={getLocalePath(l)}
+                  class:list={['lang-option', { active: l === lang }]}
+                >
+                  {langLabels[l]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <a href="#contact" class="btn btn-primary header-cta">
+          {t(lang, 'hero.cta_primary')}
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Language switcher toggle
+  const switcher = document.querySelector('.lang-switcher');
+  const currentBtn = document.querySelector('.lang-current');
+
+  if (switcher && currentBtn) {
+    currentBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = currentBtn.getAttribute('aria-expanded') === 'true';
+      currentBtn.setAttribute('aria-expanded', String(!expanded));
+      switcher.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      switcher.classList.remove('open');
+      currentBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    switcher.addEventListener('click', (e) => e.stopPropagation());
+  }
+
+  // Close mobile nav on link click
+  const navToggle = document.getElementById('nav-toggle') as HTMLInputElement | null;
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (navToggle) navToggle.checked = false;
+    });
+  });
+
+  // Header scroll effect
+  const header = document.getElementById('site-header');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    background: rgba(15, 15, 26, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-base), background var(--transition-base);
+  }
+
+  .header.scrolled {
+    background: rgba(15, 15, 26, 0.95);
+    border-bottom-color: var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: var(--space-lg);
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .logo-orbit {
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    opacity: 0.4;
+    transition: opacity var(--transition-fast);
+  }
+
+  .logo-dot {
+    fill: var(--color-link);
+    transition: fill var(--transition-fast);
+  }
+
+  .logo-text {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .logo:hover .logo-orbit {
+    opacity: 0.8;
+  }
+
+  .logo:hover .logo-text {
+    color: var(--color-accent);
+  }
+
+  /* Nav toggle (mobile hamburger) */
+  .nav-toggle-input {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    flex-shrink: 0;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    transform-origin: center;
+  }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: var(--space-lg);
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: var(--space-xs);
+    flex: 1;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+    background: var(--color-surface-hover);
+  }
+
+  /* Header actions (lang switcher + CTA) */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-shrink: 0;
+  }
+
+  .header-cta {
+    font-size: 0.8125rem;
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  /* Language switcher */
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-current {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+    font-family: inherit;
+  }
+
+  .lang-current:hover {
+    border-color: var(--color-border-light);
+    color: var(--color-text);
+  }
+
+  .lang-chevron {
+    transition: transform var(--transition-fast);
+  }
+
+  .lang-switcher.open .lang-chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + var(--space-xs));
+    right: 0;
+    min-width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    list-style: none;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition:
+      opacity var(--transition-fast),
+      transform var(--transition-fast),
+      visibility var(--transition-fast);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+
+  .lang-option:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+  }
+
+  .lang-option.active {
+    color: var(--color-accent);
+  }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+      margin-left: auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(320px, 85vw);
+      height: 100dvh;
+      flex-direction: column;
+      align-items: stretch;
+      padding: calc(var(--header-height) + var(--space-lg)) var(--space-lg) var(--space-lg);
+      background: var(--color-bg-alt);
+      border-left: 1px solid var(--color-border);
+      transform: translateX(100%);
+      transition: transform var(--transition-base);
+      gap: var(--space-lg);
+      overflow-y: auto;
+    }
+
+    .nav-toggle-input:checked ~ .nav {
+      transform: translateX(0);
+    }
+
+    /* Hamburger → X animation */
+    .nav-toggle-input:checked ~ .nav-toggle .nav-toggle-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle-input:checked ~ .nav-toggle .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle-input:checked ~ .nav-toggle .nav-toggle-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .nav-link {
+      font-size: 1rem;
+      padding: var(--space-sm) var(--space-sm);
+    }
+
+    .header-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-sm);
+    }
+
+    .header-cta {
+      text-align: center;
+      justify-content: center;
+      padding: var(--space-sm) var(--space-lg);
+    }
+
+    .lang-dropdown {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      display: flex;
+      gap: var(--space-xs);
+      background: transparent;
+      border: none;
+    }
+
+    .lang-current {
+      display: none;
+    }
+
+    .lang-option {
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,94 @@
+nav:
+  services: Ծառայություններ
+  ecosystem: Էկոհամակարգ
+  about: Մեր մասին
+  community: Համայնք
+  contact: Կապ
+
+hero:
+  title: Agentային Ստուդիա
+  subtitle: Մobil հavելվdelays և servays-ի մշakoutyun և distribuciya
+  cta_primary: Կdelays delays delays
+  cta_secondary: Relux Էdelays delays
+
+services:
+  title: Ինdelays delays Eightsendelays
+  subtitle: AI-first delays Eightsproductsdelays
+  product:
+    title: Delays Eightsproductdelays
+    description: Delays Eightsproductdelays — conceptdelays launchdelays. Mobile, web delays cross-platform delays.
+  agents:
+    title: AI delays agentdelays
+    description: AI-agentdelays delays primary engineering force. Designdelays, builddelays delays orchestratedelays autonomous agent systems.
+  architecture:
+    title: Delays Eightsarchitecturedelays
+    description: Flux/Redux patterndelays predictable state management. Type-safe, modular architectures delays Swift.
+
+ecosystem:
+  title: Relux Էdelays
+  subtitle: Open, modular, agent-first developer tools delays Swift
+  description: State containers, middleware delays developer tools delays type-safe, predictable data flow. Designed delays Swift delays agent-driven development.
+  cta: GitHub
+  features:
+    state:
+      title: State Containers
+      description: Predictable, type-safe state management delays modern Swift
+    middleware:
+      title: Middleware
+      description: Composable middleware layer delays side effects, logging delays agent integration
+    tools:
+      title: Developer Tools
+      description: Debugging, time-travel delays inspection tools delays Relux-powered apps
+
+portfolio:
+  title: "[MOCK] Պdelays"
+  subtitle: "[MOCK] Productsdelays delays delays"
+  tnl:
+    title: "T&L \u2013 Learn Foreign Words"
+    description: "[MOCK] Education app delays vocabulary learning delays visuals, audio delays text. 7 languages. Award-winning (Children's Technology Review 2013). Developer — Ivan Oparin."
+    badge: App Store
+  tundra:
+    title: Tundra Clans
+    description: "[MOCK] Tile-based strategy game. Currently delays beta."
+    badge: TestFlight
+
+about:
+  title: Մdelay Մdelays
+  subtitle: Delays 2026 delays Hayastanum
+  description: Relux Works — lean, bootstrapped studio. Predictable architecture delays agentic tooling delays together.
+  stats:
+    founded: "2026"
+    founded_label: Հdelays
+    location: Ծdelays, Հdelays
+    location_label: Delays
+    team: 2–10
+    team_label: Delays
+    focus: Swift delays AI
+    focus_label: Delays
+
+community:
+  title: Համdelays
+  subtitle: Open contribution, shared knowledge
+  description: Open-source contribution, technical discussions delays shared knowledge. Join us delays agentic development.
+  github: GitHub
+  telegram: Telegram
+  discussions: Delays
+
+contact:
+  title: Կdelays delays
+  subtitle: Delays delays delays together
+  email: ivan@relux.works
+  email_label: Delays delays
+  form:
+    name: Delays delays
+    email: Delays email
+    message: Delays delays project
+    send: Delays
+
+footer:
+  company: "« DELAYS WORKS» ΅ΤΠΩ"
+  registration: "Delays: 999.110.1559507"
+  tax_id: "Հdelays: 03036828"
+  address: "Delays Eightsdelays delays. 19, Ծdelays, Կdelays, Delays 2310"
+  copyright: "© 2026 Relux Works. Delays delays delays."
+  privacy: Delays delays

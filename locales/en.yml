@@ -1,0 +1,94 @@
+nav:
+  services: Services
+  ecosystem: Ecosystem
+  about: About
+  community: Community
+  contact: Contact
+
+hero:
+  title: Agentic Studio
+  subtitle: Developing and distributing mobile apps and services
+  cta_primary: Get in Touch
+  cta_secondary: Explore Ecosystem
+
+services:
+  title: What We Do
+  subtitle: Building products with AI-first engineering
+  product:
+    title: Product Development
+    description: Full-cycle application development — from concept to launch. Mobile, web, and cross-platform solutions designed to last.
+  agents:
+    title: AI & Agent Engineering
+    description: AI agents as the primary engineering force. We design, build, and orchestrate autonomous agent systems for real-world applications.
+  architecture:
+    title: Architecture & Consulting
+    description: Predictable state management with Flux/Redux patterns. Type-safe, modular architectures for Swift and beyond.
+
+ecosystem:
+  title: Relux Ecosystem
+  subtitle: Open, modular, agentic-first developer tools for Swift
+  description: A growing ecosystem of state containers, middleware, and developer tools built around type-safe, predictable data flow. Designed to evolve with Swift and integrate naturally with agent-driven development.
+  cta: View on GitHub
+  features:
+    state:
+      title: State Containers
+      description: Predictable, type-safe state management built for modern Swift
+    middleware:
+      title: Middleware
+      description: Composable middleware layer for side effects, logging, and agent integration
+    tools:
+      title: Developer Tools
+      description: Debugging, time-travel, and inspection tools for Relux-powered apps
+
+portfolio:
+  title: Portfolio
+  subtitle: Products we've built and shipped
+  tnl:
+    title: "T&L \u2013 Learn Foreign Words"
+    description: Education app for vocabulary learning through visuals, audio, and text. 7 languages supported. Award-winning (Children's Technology Review 2013). Developed by Ivan Oparin.
+    badge: App Store
+  tundra:
+    title: Tundra Clans
+    description: Tile-based strategy game. Currently in beta.
+    badge: TestFlight
+
+about:
+  title: About Us
+  subtitle: Founded in 2026 in Armenia
+  description: Relux Works is a lean, bootstrapped studio. We believe predictable architecture and agentic tooling belong together — and we're building both.
+  stats:
+    founded: "2026"
+    founded_label: Founded
+    location: Tsaghkadzor, Armenia
+    location_label: Location
+    team: 2–10
+    team_label: Team Size
+    focus: Swift & AI
+    focus_label: Focus
+
+community:
+  title: Community
+  subtitle: Open contribution, shared knowledge
+  description: We bring together developers through open-source contribution, technical discussions, and shared knowledge. Join us in building the future of agentic development.
+  github: GitHub
+  telegram: Telegram
+  discussions: Discussions
+
+contact:
+  title: Get in Touch
+  subtitle: Let's build something together
+  email: ivan@relux.works
+  email_label: Email us
+  form:
+    name: Your name
+    email: Your email
+    message: Tell us about your project
+    send: Send Message
+
+footer:
+  company: "RELUX WORKS LLC"
+  registration: "Reg: 999.110.1559507"
+  tax_id: "Tax ID: 03036828"
+  address: "Orbeli Brothers St. 19, Tsaghkadzor, Kotayq, Armenia 2310"
+  copyright: "© 2026 Relux Works. All rights reserved."
+  privacy: Privacy Policy

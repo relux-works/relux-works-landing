@@ -1,0 +1,141 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const stats = [
+  { value: 'about.stats.founded', label: 'about.stats.founded_label' },
+  { value: 'about.stats.location', label: 'about.stats.location_label' },
+  { value: 'about.stats.team', label: 'about.stats.team_label' },
+  { value: 'about.stats.focus', label: 'about.stats.focus_label' },
+] as const;
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title">{t(lang, 'about.title')}</h2>
+    <p class="section-subtitle">{t(lang, 'about.subtitle')}</p>
+
+    <p class="about-description">{t(lang, 'about.description')}</p>
+
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-item">
+          <span class="stat-value">{t(lang, stat.value)}</span>
+          <span class="stat-label">{t(lang, stat.label)}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-surface);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    position: relative;
+  }
+
+  /* Vertical divider between left and right columns */
+  .stat-item:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  /* Horizontal divider between top and bottom rows */
+  .stat-item:nth-child(1)::before,
+  .stat-item:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  @media (min-width: 640px) {
+    .stat-item {
+      padding: var(--space-xl) var(--space-lg);
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Reset 2-column dividers */
+    .stat-item:nth-child(1)::before,
+    .stat-item:nth-child(2)::before {
+      display: none;
+    }
+
+    /* All items except last get a vertical divider */
+    .stat-item:nth-child(odd)::after {
+      display: none;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: var(--color-border);
+    }
+  }
+</style>

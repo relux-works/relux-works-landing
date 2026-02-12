@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { type Lang, languages, langLabels, getAlternateLinks, t } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
+
+const { lang, title, description } = Astro.props;
+const pageTitle = title || `Relux Works — ${t(lang, 'hero.title')}`;
+const pageDescription = description || t(lang, 'hero.subtitle');
+const alternates = getAlternateLinks(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={pageDescription} />
+    <title>{pageTitle}</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts: Inter + Noto Sans Armenian + Noto Sans Georgian -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600;700&family=Noto+Sans+Georgian:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hreflang -->
+    {alternates.map(({ lang: l, href }) => (
+      <link rel="alternate" hreflang={l} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href="/en/" />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

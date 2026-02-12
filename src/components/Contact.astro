@@ -1,0 +1,231 @@
+---
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title">{t(lang, 'contact.title')}</h2>
+    <p class="section-subtitle">{t(lang, 'contact.subtitle')}</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a href={`mailto:${t(lang, 'contact.email')}`} class="contact-link contact-email">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <polyline points="22,4 12,13 2,4" />
+            </svg>
+          </span>
+          <span class="contact-link-content">
+            <span class="contact-link-label">{t(lang, 'contact.email_label')}</span>
+            <span class="contact-link-value">{t(lang, 'contact.email')}</span>
+          </span>
+        </a>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.2 4.4L2.4 10.8c-.6.2-.6 1.1 0 1.3l4.5 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.2 3.1c.4.3 1 .1 1.1-.4L21.9 5.3c.2-.6-.3-1.1-.7-.9z" />
+              <line x1="8.6" y1="13.6" x2="13" y2="10" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" aria-label="Contact form">
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder={t(lang, 'contact.form.name')}
+            autocomplete="name"
+            class="form-input"
+          />
+        </div>
+        <div class="form-field">
+          <input
+            type="email"
+            placeholder={t(lang, 'contact.form.email')}
+            autocomplete="email"
+            class="form-input"
+          />
+        </div>
+        <div class="form-field">
+          <textarea
+            placeholder={t(lang, 'contact.form.message')}
+            rows="5"
+            class="form-input form-textarea"
+          ></textarea>
+        </div>
+        <button type="button" class="btn btn-primary form-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+          {t(lang, 'contact.form.send')}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* -- Info column -- */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .contact-email {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color var(--transition-base),
+      box-shadow var(--transition-base);
+    text-decoration: none;
+  }
+
+  .contact-email:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.08);
+  }
+
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-alt);
+    color: var(--color-accent);
+  }
+
+  .contact-link-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .contact-link-label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-link-value {
+    font-size: 1rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background var(--transition-fast);
+  }
+
+  .social-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-surface-hover);
+  }
+
+  /* -- Form column -- */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+    outline: none;
+  }
+
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.15);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 7.5rem;
+  }
+
+  .form-submit {
+    align-self: flex-start;
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 0.9375rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+</style>
