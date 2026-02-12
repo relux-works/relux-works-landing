@@ -1,5 +1,6 @@
 const SUPPORTED_LOCALES = new Set(['en', 'ru', 'hy', 'ka']);
 const DEFAULT_LOCALE = 'en';
+const LOCALE_COOKIE = 'nf_lang';
 
 function parseAcceptLanguage(header) {
   if (!header) return [];
@@ -48,6 +49,41 @@ function pickLocale(acceptLanguage) {
   return DEFAULT_LOCALE;
 }
 
+function parseCookies(header) {
+  if (!header) return new Map();
+
+  const cookies = new Map();
+
+  for (const chunk of header.split(';')) {
+    const [rawName, ...rawValueParts] = chunk.trim().split('=');
+    if (!rawName || rawValueParts.length === 0) continue;
+
+    const rawValue = rawValueParts.join('=');
+    let value = rawValue;
+
+    try {
+      value = decodeURIComponent(rawValue);
+    } catch {
+      value = rawValue;
+    }
+
+    cookies.set(rawName, value.toLowerCase());
+  }
+
+  return cookies;
+}
+
+function pickLocaleFromCookie(cookieHeader) {
+  const cookies = parseCookies(cookieHeader);
+  const cookieLocale = cookies.get(LOCALE_COOKIE);
+
+  if (cookieLocale && SUPPORTED_LOCALES.has(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  return null;
+}
+
 export function onRequest(context) {
   const { request } = context;
 
@@ -55,7 +91,8 @@ export function onRequest(context) {
     return context.next();
   }
 
-  const locale = pickLocale(request.headers.get('accept-language'));
+  const cookieLocale = pickLocaleFromCookie(request.headers.get('cookie'));
+  const locale = cookieLocale || pickLocale(request.headers.get('accept-language'));
   const url = new URL(request.url);
   const location = `/${locale}/${url.search}`;
 
@@ -63,7 +100,7 @@ export function onRequest(context) {
     status: 302,
     headers: {
       Location: location,
-      Vary: 'Accept-Language',
+      Vary: 'Cookie, Accept-Language',
       'Cache-Control': 'no-store',
     },
   });

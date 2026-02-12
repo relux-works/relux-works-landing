@@ -66,6 +66,7 @@ const navItems = [
                 <a
                   href={getLocalePath(l)}
                   class:list={['lang-option', { active: l === lang }]}
+                  data-lang-choice={l}
                 >
                   {langLabels[l]}
                 </a>

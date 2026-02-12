@@ -36,6 +36,7 @@ const pathWithoutLang = currentPath.replace(/^\/(en|ru|hy|ka)/, '') || '/';
               href={getLocalePath(l, pathWithoutLang)}
               class:list={['lang-link', { active: l === lang }]}
               aria-current={l === lang ? 'page' : undefined}
+              data-lang-choice={l}
             >
               {langLabels[l]}
             </a>
