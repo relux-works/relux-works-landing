@@ -27,7 +27,9 @@ const pathWithoutLang = currentPath.replace(/^\/(en|ru|hy|ka)/, '') || '/';
       <div class="footer-bottom">
         <div class="footer-bottom-left">
           <span class="footer-copyright">{t(lang, 'footer.copyright')}</span>
-          <a href="#" class="footer-privacy">{t(lang, 'footer.privacy')}</a>
+          <a href={getLocalePath(lang, '/privacy-policy/')} class="footer-privacy">
+            {t(lang, 'footer.privacy')}
+          </a>
         </div>
 
         <nav class="lang-switcher" aria-label="Language switcher">
