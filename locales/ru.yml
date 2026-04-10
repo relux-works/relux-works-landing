@@ -55,6 +55,13 @@ portfolio:
     title: Waio Recorder
     description: Приложение для macOS, которое записывает аудио из любого приложения, включая встречи в Zoom и Google Meet.
     badge: TestFlight
+  vlesstun:
+    title: vless-tun
+    description: Мобильный VLESS-клиент для импорта subscription URL или прямых endpoint-конфигураций, локального хранения профилей туннеля и маршрутизации трафика устройства через выбранный сервер.
+    badge: Закрытая бета
+  actions:
+    privacy: Политика конфиденциальности
+    terms: Условия использования
 
 about:
   title: О нас

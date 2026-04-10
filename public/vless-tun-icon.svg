@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">vless-tun icon</title>
+  <desc id="desc">Dark shield with blue accents and a lightning bolt.</desc>
+  <defs>
+    <linearGradient id="frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9fc8ff" />
+      <stop offset="45%" stop-color="#335f93" />
+      <stop offset="100%" stop-color="#d7ebff" />
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07111f" />
+      <stop offset="100%" stop-color="#12284a" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#4dd7ff" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#1f76ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#1f76ff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f4fdff" />
+      <stop offset="100%" stop-color="#54bcff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="#020611" />
+  <rect x="8" y="8" width="240" height="240" rx="48" fill="url(#bg)" stroke="url(#frame)" stroke-width="4" />
+  <circle cx="128" cy="110" r="88" fill="url(#glow)" />
+
+  <path
+    d="M128 42c28 18 53 28 80 34v53c0 55-29 95-80 119-51-24-80-64-80-119V76c27-6 52-16 80-34Z"
+    fill="#0a1832"
+    stroke="#dbeeff"
+    stroke-width="6"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M128 60c23 14 44 22 66 27v43c0 44-23 76-66 96-43-20-66-52-66-96V87c22-5 43-13 66-27Z"
+    fill="none"
+    stroke="#2c80ff"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    opacity="0.85"
+  />
+  <path d="M82 92h92" stroke="#2d9dff" stroke-width="3" opacity="0.35" />
+  <path d="M93 162c22-10 48-10 70 0" stroke="#38b9ff" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+
+  <path
+    d="M136 96 106 148h25l-12 43 46-61h-25l13-34Z"
+    fill="url(#bolt)"
+    stroke="#f5fdff"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+</svg>

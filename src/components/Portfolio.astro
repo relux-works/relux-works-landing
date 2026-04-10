@@ -10,21 +10,30 @@ const { lang } = Astro.props;
 const projects = [
   {
     key: 'tnl',
-    link: 'https://apps.apple.com/us/app/t-l-learn-foreign-words/id548917415',
+    primaryLink: 'https://apps.apple.com/us/app/t-l-learn-foreign-words/id548917415',
     platform: 'appstore' as const,
     icon: '/tnl-icon.jpg',
   },
   {
     key: 'tundra',
-    link: 'https://testflight.apple.com/join/TGyPY5G2',
+    primaryLink: 'https://testflight.apple.com/join/TGyPY5G2',
     platform: 'testflight' as const,
     icon: '/tundra-clans-icon.png',
   },
   {
     key: 'waio',
-    link: 'https://testflight.apple.com/join/JDN4XVb7',
+    primaryLink: 'https://testflight.apple.com/join/JDN4XVb7',
     platform: 'testflight' as const,
     icon: '/waio-recorder-icon.svg',
+  },
+  {
+    key: 'vlesstun',
+    platform: 'status' as const,
+    icon: '/vless-tun-icon.svg',
+    legalLinks: [
+      { href: '/apps/vless-tun/privacy/', label: 'portfolio.actions.privacy' },
+      { href: '/apps/vless-tun/terms/', label: 'portfolio.actions.terms' },
+    ],
   },
 ] as const;
 ---
@@ -36,12 +45,7 @@ const projects = [
 
     <div class="portfolio-grid">
       {projects.map((project) => (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class={`portfolio-card portfolio-card--${project.key}`}
-        >
+        <article class={`portfolio-card portfolio-card--${project.key}`}>
           <div class="card-content">
             {project.icon && (
               <div class="card-icon-wrap">
@@ -52,23 +56,46 @@ const projects = [
             <p class="card-description">{t(lang, `portfolio.${project.key}.description`)}</p>
           </div>
           <div class="card-footer">
-            <span class={`platform-badge platform-badge--${project.platform}`}>
-              {project.platform === 'appstore' && (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.82 11.78 5.72 12.58 5.72C13.38 5.72 14.86 4.62 16.42 4.78C17.09 4.81 18.89 5.06 20.04 6.72C19.93 6.79 17.64 8.12 17.67 10.88C17.7 14.18 20.55 15.27 20.59 15.29C20.56 15.37 20.12 16.9 19.03 18.47L18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                </svg>
+            <div class="card-actions">
+              {'primaryLink' in project && project.primaryLink ? (
+                <a
+                  href={project.primaryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`platform-badge platform-badge--${project.platform}`}
+                >
+                  {project.platform === 'appstore' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.82 11.78 5.72 12.58 5.72C13.38 5.72 14.86 4.62 16.42 4.78C17.09 4.81 18.89 5.06 20.04 6.72C19.93 6.79 17.64 8.12 17.67 10.88C17.7 14.18 20.55 15.27 20.59 15.29C20.56 15.37 20.12 16.9 19.03 18.47L18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                    </svg>
+                  )}
+                  {project.platform === 'testflight' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                      <path d="M2 12l10 5 10-5" />
+                    </svg>
+                  )}
+                  {t(lang, `portfolio.${project.key}.badge`)}
+                </a>
+              ) : (
+                <span class={`platform-badge platform-badge--${project.platform}`}>
+                  {t(lang, `portfolio.${project.key}.badge`)}
+                </span>
               )}
-              {project.platform === 'testflight' && (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              )}
-              {t(lang, `portfolio.${project.key}.badge`)}
-            </span>
+
+              {'legalLinks' in project && project.legalLinks ? (
+                <div class="legal-links">
+                  {project.legalLinks.map((link) => (
+                    <a href={link.href} class="legal-link">
+                      {t(lang, link.label)}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
-        </a>
+        </article>
       ))}
     </div>
   </div>
@@ -151,6 +178,20 @@ const projects = [
     opacity: 0.16;
   }
 
+  .portfolio-card--vlesstun {
+    background: var(--color-surface);
+  }
+
+  .portfolio-card--vlesstun::before {
+    background: linear-gradient(
+      135deg,
+      rgba(7, 17, 32, 0.98) 0%,
+      rgba(22, 66, 120, 0.28) 52%,
+      rgba(78, 190, 255, 0.14) 100%
+    );
+    opacity: 0.9;
+  }
+
   .portfolio-card:hover {
     border-color: var(--color-accent);
     box-shadow: 0 0 24px rgba(233, 69, 96, 0.1);
@@ -197,8 +238,13 @@ const projects = [
   .card-footer {
     position: relative;
     z-index: 1;
+  }
+
+  .card-actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: var(--space-sm);
   }
 
   .platform-badge {
@@ -222,6 +268,29 @@ const projects = [
     background: var(--color-bg-alt);
     color: var(--color-link);
     border: 1px solid var(--color-border);
+  }
+
+  .platform-badge--status {
+    background: rgba(78, 190, 255, 0.1);
+    color: #8fd4ff;
+    border: 1px solid rgba(78, 190, 255, 0.26);
+  }
+
+  .legal-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .legal-link {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .legal-link:hover {
+    color: var(--color-text);
+    border-color: rgba(255, 255, 255, 0.48);
   }
 
   @media (min-width: 640px) {

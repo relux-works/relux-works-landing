@@ -55,6 +55,13 @@ portfolio:
     title: Waio Recorder
     description: macOS հավելված, որը ձայն է ձայնագրում ցանկացած հավելվածից, այդ թվում Zoom և Google Meet հանդիպումներից։
     badge: TestFlight
+  vlesstun:
+    title: vless-tun
+    description: Mobile VLESS tunnel client for importing subscription URLs or direct endpoints, storing tunnel profiles locally, and routing device traffic through a selected server.
+    badge: Փակ բետա
+  actions:
+    privacy: Գաղտնիության քաղաքականություն
+    terms: Օգտագործման պայմաններ
 
 about:
   title: Մեր մասին
