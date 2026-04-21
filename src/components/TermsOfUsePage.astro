@@ -1,7 +1,7 @@
 ---
 import LegalPage from './LegalPage.astro';
 import type { Lang } from '../i18n/utils';
-import PrivacyPolicyContent from '../content/privacy-policy.md';
+import TermsOfUseContent from '../content/terms-of-use.md';
 
 interface Props {
   lang: Lang;
@@ -12,7 +12,7 @@ const { lang } = Astro.props;
 
 <LegalPage
   lang={lang}
-  title="Privacy Policy | Relux Works"
-  description="Privacy Policy for Relux Works LLC."
-  Content={PrivacyPolicyContent}
+  title="Terms of Use | Relux Works"
+  description="Terms of Use for Relux Works LLC."
+  Content={TermsOfUseContent}
 />
