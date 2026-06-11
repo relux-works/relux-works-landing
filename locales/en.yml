@@ -1,5 +1,10 @@
+meta:
+  title: "Relux Works — AI MVP Development Studio | Fixed Price, 4–8 Weeks"
+  description: "AI-native product studio building fixed-price MVPs for startup founders: $20k–$50k, 4–8 weeks, 100% IP and source code ownership, QA and post-launch support included."
+
 nav:
   services: Services
+  mvp: MVP Development
   ecosystem: Ecosystem
   about: About
   community: Community
@@ -7,7 +12,7 @@ nav:
 
 hero:
   title: Agentic Studio
-  subtitle: Developing and distributing mobile apps and services
+  subtitle: AI-native studio building fixed-price MVPs, mobile apps, and web products for startup founders
   cta_primary: Get in Touch
   cta_secondary: Explore Ecosystem
 
@@ -23,6 +28,134 @@ services:
   architecture:
     title: Architecture & Consulting
     description: Predictable state management with Flux/Redux patterns. Type-safe, modular architectures for Swift and beyond.
+  mvp_banner:
+    title: Need an MVP? Fixed price, delivered in 4–8 weeks.
+    description: AI-assisted MVP development for startup founders. Packages from $20,000, you own 100% of the source code, QA and post-launch support included.
+    cta: See MVP packages & pricing
+
+mvp:
+  meta:
+    title: "AI MVP Development — Fixed Price $20k–$50k, 4–8 Weeks | Relux Works"
+    description: "Fixed-price AI MVP development for startup founders: packages at $20k, $35k, and $50k, delivery in 4–8 weeks, 100% IP and source code ownership, QA, security review, and 30 days of post-launch support included."
+  hero:
+    badge: AI MVP Studio
+    title: AI MVP Development for Startup Founders
+    subtitle: Fixed price. 4–8 weeks from kickoff to launch. You own 100% of the source code.
+    intro: Relux Works is an AI-native development studio — a vibe coding agency where senior engineers build with Claude Code and Cursor. AI-assisted development gives you agency-grade quality at startup speed — production code, not a no-code prototype.
+    cta_primary: Get a fixed-price quote
+    cta_secondary: See pricing
+  pricing:
+    title: MVP Pricing — Fixed Packages
+    subtitle: Transparent fixed pricing. No hourly billing, no scope creep, no surprises.
+    per_project: fixed price
+    featured: Most popular
+    sprint:
+      name: MVP Sprint
+      price: "$20,000"
+      duration: 4 weeks
+      description: Validate one core idea fast. One platform — web (Next.js) or iOS (Swift).
+      f1: Core user flow + authentication
+      f2: One AI-powered feature (Claude API or similar)
+      f3: Payment-ready architecture (Stripe)
+      f4: QA, security review, deployment
+    standard:
+      name: MVP Standard
+      price: "$35,000"
+      duration: 6 weeks
+      description: A complete product for first paying users. Web or mobile, with admin and analytics.
+      f1: Everything in MVP Sprint
+      f2: Payments, subscriptions, and billing flows
+      f3: Admin dashboard + product analytics
+      f4: Third-party integrations (CRM, email, webhooks)
+    plus:
+      name: MVP Plus
+      price: "$50,000"
+      duration: 8 weeks
+      description: Web + mobile together, or a deeper AI product with agentic workflows.
+      f1: Everything in MVP Standard
+      f2: Web + iOS, or complex AI agent pipelines
+      f3: Extended security review and load testing
+      f4: 60 days of post-launch support
+    note: Every package includes 100% IP and source code ownership, QA, a security review, and post-launch support. Larger scope? We quote it fixed too.
+  included:
+    title: What every package includes
+    i1:
+      title: 100% IP & source code ownership
+      description: All code lives in your GitHub organization from day one. Full IP transfer in the contract — no licenses, no lock-in.
+    i2:
+      title: QA & automated testing
+      description: Test suites, CI pipelines, and manual QA passes before every release.
+    i3:
+      title: Security review
+      description: Secrets management, dependency audit, and an OWASP-based security checklist before launch.
+    i4:
+      title: Post-launch support
+      description: 30 days of bug fixes and stabilization after launch are included (60 days on MVP Plus).
+    i5:
+      title: Weekly demos
+      description: A working build every week. You see progress, not status reports.
+    i6:
+      title: Launch & deployment
+      description: App Store submission or production web deployment — included, not an extra.
+  process:
+    title: From idea to launch in 4–8 weeks
+    w1:
+      title: Week 1 — Scope & architecture
+      description: We turn your idea into a fixed scope — user flows, data model, architecture, and a week-by-week plan you sign off on.
+    w2:
+      title: Weeks 2–3 — Build
+      description: Senior engineers build with AI-assisted development (Claude Code, Cursor). Working software demoed every week.
+    w3:
+      title: Weeks 4–6 — Integrate & harden
+      description: Payments, AI features, integrations. QA, security review, performance passes.
+    w4:
+      title: Launch — and 30 days beyond
+      description: App Store or production deploy, monitoring, and 30 days of included post-launch support.
+  stack:
+    title: "Build style: AI-assisted, production-grade"
+    description: We are a vibe coding studio in the literal sense — Claude Code and Cursor are part of the team, and senior engineers review every line. You get the speed of AI-assisted development with the quality of production code — type-safe Swift for iOS, Next.js/TypeScript for web, Claude API for AI features. No no-code lock-in — a codebase your future in-house team will thank you for.
+    t1: Claude Code
+    t2: Cursor
+    t3: Swift / iOS
+    t4: Next.js / TypeScript
+    t5: Claude API
+    t6: PostgreSQL / Supabase
+  faq:
+    title: Frequently asked questions
+    q1:
+      q: How much does MVP development cost at Relux Works?
+      a: We work on fixed-price packages — MVP Sprint at $20,000 (4 weeks), MVP Standard at $35,000 (6 weeks), and MVP Plus at $50,000 (8 weeks). The price is agreed before we start and does not change unless you change the scope.
+    q2:
+      q: How long does it take to build an MVP?
+      a: 4 to 8 weeks depending on the package. Week 1 is scope and architecture, then weekly working demos until launch. AI-assisted development is what makes this timeline realistic without cutting corners.
+    q3:
+      q: Who owns the source code and IP?
+      a: You do — 100%. The repository is created in your GitHub organization on day one, and the contract assigns all IP to you. No licenses back to us, no vendor lock-in.
+    q4:
+      q: What does "vibe coding" or AI-assisted development mean in practice?
+      a: Our engineers build with Claude Code and Cursor — AI agents write a large share of the code, while senior engineers design the architecture and review everything. That is how we deliver agency-grade MVPs several times faster than traditional teams.
+    q5:
+      q: Is this no-code like Bubble or Lovable, or real production code?
+      a: Real production code — Swift for iOS, Next.js/TypeScript for web. No-code tools are great for prototypes, but they hit scaling and ownership limits fast. You get a codebase your future in-house team can take over directly.
+    q6:
+      q: What happens after launch?
+      a: Every package includes post-launch support — 30 days of bug fixes and stabilization (60 days on MVP Plus). After that, most clients move to a monthly retainer for iteration, or hand the codebase to their own team — it is fully documented and theirs.
+    q7:
+      q: How do you handle QA and security?
+      a: Every package ships with automated test suites, CI, and manual QA. Before launch we run a security review — secrets management, dependency audit, and an OWASP-based checklist. MVP Plus adds an extended security review and load testing.
+    q8:
+      q: I am a non-technical founder. Can I work with you?
+      a: Yes — most of our clients are non-technical founders. Week 1 translates your idea into a concrete scope in plain language, and weekly demos keep you in control without reading code.
+    q9:
+      q: What if my requirements change mid-project?
+      a: Small adjustments are absorbed into the fixed scope. Bigger changes get a transparent fixed-price change request — agreed before we build, so the budget never surprises you.
+    q10:
+      q: Where are you located and do you work with international clients?
+      a: Relux Works LLC is registered in Armenia and works remotely with founders worldwide — US, EU, and beyond. Contracts in English, USD invoicing, async-friendly communication.
+  cta:
+    title: Tell us what you are building
+    description: Send a couple of paragraphs about your idea — we reply within one business day with a recommended package and a fixed quote.
+    button: Email ivan@relux.works
 
 ecosystem:
   title: Relux Ecosystem
@@ -44,7 +177,7 @@ portfolio:
   title: Portfolio
   subtitle: Products we've built and shipped
   tnl:
-    title: "T&L \u2013 Learn Foreign Words"
+    title: "T&L – Learn Foreign Words"
     description: Education app for vocabulary learning through visuals, audio, and text. 7 languages supported. Award-winning (Children's Technology Review 2013).
     badge: App Store
   tundra:

@@ -9,9 +9,50 @@ interface Props {
 }
 
 const { lang, title, description } = Astro.props;
-const pageTitle = title || `Relux Works — ${t(lang, 'hero.title')}`;
-const pageDescription = description || t(lang, 'hero.subtitle');
-const alternates = getAlternateLinks(Astro.url.pathname);
+const pageTitle = title || t(lang, 'meta.title');
+const pageDescription = description || t(lang, 'meta.description');
+const site = Astro.site ?? new URL('https://relux.works');
+const canonicalUrl = new URL(Astro.url.pathname, site).href;
+const alternates = getAlternateLinks(Astro.url.pathname).map(({ lang: l, href }) => ({
+  lang: l,
+  href: new URL(href, site).href,
+}));
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${site.origin}/#organization`,
+  name: 'Relux Works',
+  legalName: 'RELUX WORKS LLC',
+  url: `${site.origin}/`,
+  logo: `${site.origin}/logo.svg`,
+  email: 'ivan@relux.works',
+  foundingDate: '2026',
+  taxID: '03036828',
+  numberOfEmployees: {
+    '@type': 'QuantitativeValue',
+    minValue: 2,
+    maxValue: 10,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Orbeli Brothers St. 19',
+    addressLocality: 'Tsaghkadzor',
+    addressRegion: 'Kotayq',
+    postalCode: '2310',
+    addressCountry: 'AM',
+  },
+  areaServed: 'Worldwide',
+  sameAs: ['https://github.com/relux-works'],
+  knowsAbout: [
+    'AI MVP development',
+    'AI-assisted software development',
+    'MVP development for startups',
+    'AI agent engineering',
+    'iOS and Swift development',
+    'Web application development',
+  ],
+};
 ---
 
 <!doctype html>
@@ -21,6 +62,19 @@ const alternates = getAlternateLinks(Astro.url.pathname);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
     <title>{pageTitle}</title>
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Relux Works" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={lang} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -36,7 +90,10 @@ const alternates = getAlternateLinks(Astro.url.pathname);
     {alternates.map(({ lang: l, href }) => (
       <link rel="alternate" hreflang={l} href={href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href="/en/" />
+    <link rel="alternate" hreflang="x-default" href={alternates.find((a) => a.lang === 'en')?.href} />
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
     <slot name="head" />
   </head>

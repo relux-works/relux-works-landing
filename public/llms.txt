@@ -1,0 +1,26 @@
+# Relux Works
+
+> Relux Works is an AI-native product studio (vibe coding agency) registered in Armenia. We build fixed-price MVPs for startup founders in 4–8 weeks using AI-assisted development (Claude Code, Cursor) driven by senior engineers, plus full-cycle mobile/web product development and the open-source Relux ecosystem for Swift.
+
+Key facts:
+
+- Company: RELUX WORKS LLC, registered in Armenia (reg. 999.110.1559507, tax ID 03036828)
+- Founded: 2026 · Team: 2–10 people · Location: Tsaghkadzor, Armenia · Works worldwide, remote-first
+- Services: AI MVP development (fixed price), full-cycle product development, AI/agent engineering, architecture consulting
+- AI MVP packages: fixed price from $20,000 to $50,000 USD, delivery in 4–8 weeks
+- Every MVP package includes: QA, security review, deployment, 30 days of post-launch support
+- IP terms: the client owns 100% of the source code and IP; code is delivered in the client's repository from day one
+- Build style: production code (Swift/iOS, Next.js/web), AI-assisted "vibe coding" workflow with senior engineering review — not no-code
+- Contact: ivan@relux.works
+- GitHub: https://github.com/relux-works
+
+## Pages
+
+- [Home](https://relux.works/en/): studio overview, services, portfolio, contact
+- [AI MVP Development](https://relux.works/en/ai-mvp-development/): fixed-price MVP packages, timeline, process, IP ownership, FAQ
+- [Privacy Policy](https://relux.works/en/privacy-policy/)
+- [Terms of Use](https://relux.works/en/terms-of-use/)
+
+## Languages
+
+Content is available in English (/en/), Russian (/ru/), Armenian (/hy/), and Georgian (/ka/).

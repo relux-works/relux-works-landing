@@ -7,12 +7,15 @@ interface Props {
 
 const { lang } = Astro.props;
 
+const home = getLocalePath(lang);
+
 const navItems = [
-  { key: 'nav.services', anchor: '#services' },
-  { key: 'nav.ecosystem', anchor: '#ecosystem' },
-  { key: 'nav.about', anchor: '#about' },
-  { key: 'nav.community', anchor: '#community' },
-  { key: 'nav.contact', anchor: '#contact' },
+  { key: 'nav.services', href: `${home}#services` },
+  { key: 'nav.mvp', href: getLocalePath(lang, '/ai-mvp-development/') },
+  { key: 'nav.ecosystem', href: `${home}#ecosystem` },
+  { key: 'nav.about', href: `${home}#about` },
+  { key: 'nav.community', href: `${home}#community` },
+  { key: 'nav.contact', href: `${home}#contact` },
 ] as const;
 ---
 
@@ -39,9 +42,9 @@ const navItems = [
 
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list">
-        {navItems.map(({ key, anchor }) => (
+        {navItems.map(({ key, href }) => (
           <li>
-            <a href={anchor} class="nav-link">{t(lang, key)}</a>
+            <a href={href} class="nav-link">{t(lang, key)}</a>
           </li>
         ))}
       </ul>
@@ -75,7 +78,7 @@ const navItems = [
           </ul>
         </div>
 
-        <a href="#contact" class="btn btn-primary header-cta">
+        <a href={`${home}#contact`} class="btn btn-primary header-cta">
           {t(lang, 'hero.cta_primary')}
         </a>
       </div>

@@ -1,5 +1,5 @@
 ---
-import { t, type Lang } from '../i18n/utils';
+import { t, type Lang, getLocalePath } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -66,6 +66,20 @@ const services = [
         </div>
       ))}
     </div>
+
+    <a href={getLocalePath(lang, '/ai-mvp-development/')} class="mvp-banner">
+      <div class="mvp-banner-text">
+        <h3 class="mvp-banner-title">{t(lang, 'services.mvp_banner.title')}</h3>
+        <p class="mvp-banner-description">{t(lang, 'services.mvp_banner.description')}</p>
+      </div>
+      <span class="mvp-banner-cta">
+        {t(lang, 'services.mvp_banner.cta')}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -118,6 +132,49 @@ const services = [
     line-height: 1.7;
   }
 
+  /* MVP banner */
+  .mvp-banner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.08), rgba(124, 140, 248, 0.06)), var(--color-surface);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .mvp-banner:hover {
+    box-shadow: 0 0 24px rgba(233, 69, 96, 0.16);
+    transform: translateY(-2px);
+    color: var(--color-text);
+  }
+
+  .mvp-banner-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .mvp-banner-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .mvp-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+
   @media (min-width: 640px) {
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -127,6 +184,12 @@ const services = [
   @media (min-width: 960px) {
     .services-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mvp-banner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 </style>

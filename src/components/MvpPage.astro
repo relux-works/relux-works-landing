@@ -1,0 +1,526 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { t, type Lang, getLocalePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const site = Astro.site ?? new URL('https://relux.works');
+const pageUrl = new URL(getLocalePath(lang, '/ai-mvp-development/'), site).href;
+
+const tiers = ['sprint', 'standard', 'plus'] as const;
+const tierPrices: Record<(typeof tiers)[number], number> = {
+  sprint: 20000,
+  standard: 35000,
+  plus: 50000,
+};
+const includedItems = ['i1', 'i2', 'i3', 'i4', 'i5', 'i6'] as const;
+const processSteps = ['w1', 'w2', 'w3', 'w4'] as const;
+const stackItems = ['t1', 't2', 't3', 't4', 't5', 't6'] as const;
+const faqItems = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'] as const;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: t(lang, 'mvp.hero.title'),
+  serviceType: 'AI MVP development',
+  description: t(lang, 'mvp.meta.description'),
+  url: pageUrl,
+  provider: { '@id': `${site.origin}/#organization` },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: t(lang, 'mvp.pricing.title'),
+    itemListElement: tiers.map((tier) => ({
+      '@type': 'Offer',
+      name: t(lang, `mvp.pricing.${tier}.name`),
+      description: `${t(lang, `mvp.pricing.${tier}.description`)} (${t(lang, `mvp.pricing.${tier}.duration`)})`,
+      price: tierPrices[tier],
+      priceCurrency: 'USD',
+      url: pageUrl,
+    })),
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: t(lang, `mvp.faq.${item}.q`),
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: t(lang, `mvp.faq.${item}.a`),
+    },
+  })),
+};
+---
+
+<Layout lang={lang} title={t(lang, 'mvp.meta.title')} description={t(lang, 'mvp.meta.description')}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Header lang={lang} />
+
+  <main>
+    <!-- Hero -->
+    <section class="mvp-hero">
+      <div class="container">
+        <span class="mvp-badge">{t(lang, 'mvp.hero.badge')}</span>
+        <h1 class="mvp-title">{t(lang, 'mvp.hero.title')}</h1>
+        <p class="mvp-subtitle">{t(lang, 'mvp.hero.subtitle')}</p>
+        <p class="mvp-intro">{t(lang, 'mvp.hero.intro')}</p>
+        <div class="mvp-hero-actions">
+          <a href="#mvp-contact" class="btn btn-primary">{t(lang, 'mvp.hero.cta_primary')}</a>
+          <a href="#pricing" class="btn btn-outline">{t(lang, 'mvp.hero.cta_secondary')}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'mvp.pricing.title')}</h2>
+        <p class="section-subtitle">{t(lang, 'mvp.pricing.subtitle')}</p>
+
+        <div class="pricing-grid">
+          {tiers.map((tier) => (
+            <div class:list={['pricing-card', { featured: tier === 'standard' }]}>
+              {tier === 'standard' && (
+                <span class="pricing-featured-badge">{t(lang, 'mvp.pricing.featured')}</span>
+              )}
+              <h3 class="pricing-name">{t(lang, `mvp.pricing.${tier}.name`)}</h3>
+              <div class="pricing-price">
+                {t(lang, `mvp.pricing.${tier}.price`)}
+                <span class="pricing-per">{t(lang, 'mvp.pricing.per_project')}</span>
+              </div>
+              <div class="pricing-duration">{t(lang, `mvp.pricing.${tier}.duration`)}</div>
+              <p class="pricing-description">{t(lang, `mvp.pricing.${tier}.description`)}</p>
+              <ul class="pricing-features">
+                {(['f1', 'f2', 'f3', 'f4'] as const).map((f) => (
+                  <li>{t(lang, `mvp.pricing.${tier}.${f}`)}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <p class="pricing-note">{t(lang, 'mvp.pricing.note')}</p>
+      </div>
+    </section>
+
+    <!-- What's included -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'mvp.included.title')}</h2>
+        <div class="included-grid">
+          {includedItems.map((item) => (
+            <div class="included-card">
+              <h3 class="included-title">{t(lang, `mvp.included.${item}.title`)}</h3>
+              <p class="included-description">{t(lang, `mvp.included.${item}.description`)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'mvp.process.title')}</h2>
+        <ol class="process-list">
+          {processSteps.map((step, i) => (
+            <li class="process-step">
+              <span class="process-number">{i + 1}</span>
+              <div>
+                <h3 class="process-title">{t(lang, `mvp.process.${step}.title`)}</h3>
+                <p class="process-description">{t(lang, `mvp.process.${step}.description`)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'mvp.stack.title')}</h2>
+        <p class="stack-description">{t(lang, 'mvp.stack.description')}</p>
+        <ul class="stack-list">
+          {stackItems.map((item) => (
+            <li class="stack-chip">{t(lang, `mvp.stack.${item}`)}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'mvp.faq.title')}</h2>
+        <div class="faq-list">
+          {faqItems.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">{t(lang, `mvp.faq.${item}.q`)}</summary>
+              <p class="faq-answer">{t(lang, `mvp.faq.${item}.a`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="mvp-contact" class="section section-alt">
+      <div class="container mvp-cta">
+        <h2 class="section-title">{t(lang, 'mvp.cta.title')}</h2>
+        <p class="mvp-cta-description">{t(lang, 'mvp.cta.description')}</p>
+        <a href="mailto:ivan@relux.works" class="btn btn-primary">{t(lang, 'mvp.cta.button')}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  /* Hero */
+  .mvp-hero {
+    padding: var(--space-2xl) 0 var(--space-xl);
+    text-align: center;
+  }
+
+  .mvp-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .mvp-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 22ch;
+    margin: 0 auto var(--space-md);
+  }
+
+  .mvp-subtitle {
+    font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
+    color: var(--color-text);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+  }
+
+  .mvp-intro {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .mvp-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 24px rgba(233, 69, 96, 0.12);
+  }
+
+  .pricing-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .pricing-featured-badge {
+    position: absolute;
+    top: calc(-1 * var(--space-sm));
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px var(--space-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-bg);
+    background: var(--color-accent);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .pricing-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .pricing-per {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+
+  .pricing-duration {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin: var(--space-sm) 0;
+  }
+
+  .pricing-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: auto;
+  }
+
+  .pricing-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .pricing-note {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  /* Included */
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .included-card {
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .included-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .included-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Process */
+  .process-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 780px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .process-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+  }
+
+  .process-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .process-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Stack */
+  .stack-description {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 780px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .stack-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .stack-chip {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 860px;
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--transition-fast);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent);
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    float: right;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-answer {
+    margin-top: var(--space-sm);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  /* CTA */
+  .mvp-cta {
+    text-align: center;
+  }
+
+  .mvp-cta-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  @media (min-width: 640px) {
+    .included-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .included-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
