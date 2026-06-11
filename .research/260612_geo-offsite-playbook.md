@@ -15,9 +15,9 @@ On-site work (done in this repo) makes relux.works *extractable and verifiable*.
 
 ## Priority 1 — Index plumbing (do this week, free)
 
-- [ ] **Bing Webmaster Tools** — register relux.works, submit `sitemap-index.xml`. ChatGPT search runs on Bing; an unindexed site does not exist for ChatGPT.
-- [ ] **IndexNow** — Cloudflare Pages has a built-in IndexNow integration (Dashboard → Speed/Crawler Hints) or submit manually. Instant Bing indexing on deploy.
-- [ ] **Google Search Console** — register, submit sitemap (Gemini grounding + Google AI Overviews).
+- [x] **Bing Webmaster Tools** — register relux.works, submit `sitemap-index.xml`. ChatGPT search runs on Bing; an unindexed site does not exist for ChatGPT. *(done 2026-06-12)*
+- [x] **IndexNow** — Cloudflare Crawler Hints enabled. Instant Bing indexing on deploy. *(done 2026-06-12)*
+- [x] **Google Search Console** — register, submit sitemap (Gemini grounding + Google AI Overviews). *(done 2026-06-12)*
 - [ ] Verify AI crawlers reach the site after deploy: check Cloudflare logs for `GPTBot`, `ClaudeBot`, `PerplexityBot` hits. robots.txt now explicitly allows all of them.
 
 ## Priority 2 — Directory profiles (the verification layer)

@@ -1,0 +1,50 @@
+---
+// Static root redirect — locale detection fallback that works on any host.
+// On Cloudflare Pages the server-side function (functions/index.js) takes
+// precedence over this file; everywhere else this page does the same job
+// client-side: nf_lang cookie → browser language → /en/.
+const site = (Astro.site ?? new URL('https://relux.works')).origin;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relux Works</title>
+    <link rel="canonical" href={`${site}/en/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/en/" />
+    </noscript>
+    <script is:inline>
+      (function () {
+        var SUPPORTED = ['en', 'ru', 'hy', 'ka'];
+
+        function fromCookie() {
+          var match = document.cookie.match(/(?:^|;\s*)nf_lang=([^;]+)/);
+          var value = match ? decodeURIComponent(match[1]).toLowerCase() : null;
+          return SUPPORTED.indexOf(value) !== -1 ? value : null;
+        }
+
+        function fromBrowser() {
+          var tags = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < tags.length; i++) {
+            var base = String(tags[i]).toLowerCase().split('-')[0];
+            if (SUPPORTED.indexOf(base) !== -1) return base;
+          }
+          return null;
+        }
+
+        var locale = fromCookie() || fromBrowser() || 'en';
+        window.location.replace('/' + locale + '/' + window.location.search);
+      })();
+    </script>
+    <meta http-equiv="refresh" content="1; url=/en/" />
+  </head>
+  <body>
+    <p style="font-family: system-ui, sans-serif; padding: 2rem">
+      <a href="/en/">Continue to relux.works/en/</a>
+    </p>
+  </body>
+</html>

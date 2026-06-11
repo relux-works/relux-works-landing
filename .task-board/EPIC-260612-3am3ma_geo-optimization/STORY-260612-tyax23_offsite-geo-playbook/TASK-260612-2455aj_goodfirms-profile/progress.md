@@ -2,10 +2,10 @@
 backlog
 
 ## Assigned To
-claude-fable
+(none)
 
 ## Created
-2026-06-11T20:58:41Z
+2026-06-11T23:00:53Z
 
 ## Last Update
 2026-06-11T23:00:53Z
@@ -20,7 +20,6 @@ claude-fable
 (empty)
 
 ## Notes
-Playbook at .research/260612_geo-offsite-playbook.md. Off-site execution (Bing Webmaster, Clutch, GoodFirms, listicles) is manual owner work — checklist inside.
 
 ## Precondition Resources
 (none)

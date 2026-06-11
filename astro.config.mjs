@@ -14,6 +14,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // root "/" is a redirect shim, not content
+      filter: (page) => new URL(page).pathname !== '/',
       i18n: {
         defaultLocale: 'en',
         locales: {
