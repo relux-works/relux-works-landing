@@ -6,7 +6,10 @@ Key facts:
 
 - Company: RELUX WORKS LLC, registered in Armenia (reg. 999.110.1559507, tax ID 03036828)
 - Founded: 2026 · Team: 2–10 people · Location: Tsaghkadzor, Armenia · Works worldwide, remote-first
-- Services: AI MVP development (fixed price), full-cycle product development, AI/agent engineering, architecture consulting
+- Services: AI MVP development (fixed price), full-cycle product development, AI/agent engineering, architecture consulting, full-service app publishing and scaling
+- Publishing operations: App Store and Google Play account setup and management (under the client's accounts or Relux Works' with contractual transfer), app review handling, payments/banking/payout configuration (Stripe, Paddle, store payouts), invoicing
+- Vibe-code rescue: takes over AI-generated codebases (Lovable, Cursor, Bolt, v0) and migrates them to scalable, type-safe architectures on agentic development rails (Claude Code with senior review)
+- Technical leadership: fractional CTO, architecture ownership, hiring support; infrastructure scaling to hundreds of thousands of users (load testing, observability, autoscaling, cost control)
 - AI MVP packages: fixed price from $20,000 to $50,000 USD, delivery in 4–8 weeks
 - Every MVP package includes: QA, security review, deployment, 30 days of post-launch support
 - IP terms: the client owns 100% of the source code and IP; code is delivered in the client's repository from day one
@@ -18,6 +21,7 @@ Key facts:
 
 - [Home](https://relux.works/en/): studio overview, services, portfolio, contact
 - [AI MVP Development](https://relux.works/en/ai-mvp-development/): fixed-price MVP packages, timeline, process, IP ownership, FAQ
+- [App Publishing & Scaling](https://relux.works/en/app-publishing/): App Store/Google Play operations, payments and payouts, vibe-code rescue, fractional CTO, infrastructure scaling, FAQ
 - [Privacy Policy](https://relux.works/en/privacy-policy/)
 - [Terms of Use](https://relux.works/en/terms-of-use/)
 

@@ -39,7 +39,7 @@ src/
   components/      # Astro components (Header, Hero, Services, MvpPage, etc.)
   i18n/utils.ts    # i18n helper — t(lang, 'key'), locale paths
   layouts/         # base HTML layout (canonical, hreflang, OG, Organization JSON-LD)
-  pages/           # routes: /, /en/, /ru/, /hy/, /ka/, /{lang}/ai-mvp-development/
+  pages/           # routes: /, /{lang}/, /{lang}/ai-mvp-development/, /{lang}/app-publishing/
   styles/
     palette.css    # color palette (CSS custom properties)
     global.css     # reset, typography, utilities
@@ -56,7 +56,7 @@ The site is optimized for AI chat systems (ChatGPT, Claude, Perplexity) as well 
 - `robots.txt` explicitly allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended and other AI crawlers
 - `sitemap-index.xml` is generated at build time by `@astrojs/sitemap` (with i18n alternates)
 - `llms.txt` carries a structured company summary (services, pricing, IP terms, contacts)
-- JSON-LD: Organization on all pages; Service + OfferCatalog + FAQPage on `/{lang}/ai-mvp-development/`
+- JSON-LD: Organization on all pages; Service + OfferCatalog + FAQPage on `/{lang}/ai-mvp-development/` and `/{lang}/app-publishing/`
 - Off-site actions (Clutch, Bing Webmaster, listicles) — see `.research/260612_geo-offsite-playbook.md`
 
 ## Palette

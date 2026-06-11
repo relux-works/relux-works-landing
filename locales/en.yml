@@ -5,6 +5,7 @@ meta:
 nav:
   services: Services
   mvp: MVP Development
+  publishing: Publishing
   ecosystem: Ecosystem
   about: About
   community: Community
@@ -28,6 +29,9 @@ services:
   architecture:
     title: Architecture & Consulting
     description: Predictable state management with Flux/Redux patterns. Type-safe, modular architectures for Swift and beyond.
+  publishing:
+    title: Publishing & Scaling
+    description: We run the whole publishing stack — App Store and Google Play accounts, payments and payouts, vibe-code rescue, and infrastructure that scales to hundreds of thousands of users.
   mvp_banner:
     title: Need an MVP? Fixed price, delivered in 4–8 weeks.
     description: AI-assisted MVP development for startup founders. Packages from $20,000, you own 100% of the source code, QA and post-launch support included.
@@ -155,6 +159,77 @@ mvp:
   cta:
     title: Tell us what you are building
     description: Send a couple of paragraphs about your idea — we reply within one business day with a recommended package and a fixed quote.
+    button: Email ivan@relux.works
+
+publishing:
+  meta:
+    title: "Full-Service App Publishing & Scaling — App Store, Google Play, Payments | Relux Works"
+    description: "We take on the entire publishing operation — App Store and Google Play accounts, app review, banking and payouts, fractional CTO leadership, vibe-code rescue (Lovable, Cursor, Bolt), and scaling infrastructure to hundreds of thousands of users."
+  hero:
+    badge: Full-Service Studio
+    title: We Publish, Operate, and Scale Your App
+    subtitle: App Store and Google Play accounts, payments and payouts, technical leadership, and infrastructure that scales — all on us.
+    intro: Shipping an MVP is half the job. The other half is operations — developer accounts, app review, banking and payout rails, monitoring, scaling, and someone senior owning the technical roadmap. Relux Works takes on all publishing responsibilities, so founders can stay on product and growth.
+    cta_primary: Discuss your project
+  offers:
+    title: What we take on
+    accounts:
+      title: App Store & Google Play publishing
+      description: We set up and operate the full release pipeline — under your accounts or ours.
+      f1: Apple Developer & Google Play Console setup (DUNS, entity verification)
+      f2: App review submissions, rejection handling, expedited reviews
+      f3: Releases, phased rollouts, TestFlight and internal tracks
+      f4: Store listings, screenshots, ASO basics
+    payments:
+      title: Payments, banking & payouts
+      description: Money flows configured end to end — from checkout to your bank account.
+      f1: Stripe / Paddle merchant setup, subscriptions and billing
+      f2: App Store & Google Play payout configuration, banking and tax forms
+      f3: Invoicing and revenue reporting
+      f4: Publishing under our LLC with contractual revenue transfer — when you don't want to set up an entity yet
+    rescue:
+      title: Vibe-code rescue & agentic rails
+      description: Built your prototype with Lovable, Cursor, Bolt, or v0? We take it over and make it production-grade.
+      f1: Codebase audit + tests around current behavior first
+      f2: Migration to a scalable architecture — type-safe, modular, documented
+      f3: Agentic development rails — Claude Code-driven workflow with senior engineering review
+      f4: Your roadmap keeps moving during the migration
+    scale:
+      title: Technical leadership & scaling
+      description: A senior team that owns architecture and infrastructure as you grow.
+      f1: Fractional CTO — roadmap, architecture decisions, hiring support
+      f2: Infrastructure that scales to hundreds of thousands of users
+      f3: Load testing, observability, autoscaling, cost control
+      f4: Security, compliance, and incident response practices
+  faq:
+    title: Frequently asked questions
+    q1:
+      q: Can you publish our app under your App Store and Google Play accounts?
+      a: Yes. Two models — we set up your own Apple Developer and Google Play Console accounts (including DUNS and entity verification) and operate them for you, or we publish under the Relux Works accounts with a contract that guarantees transfer of the app, data, and revenue to you at any time.
+    q2:
+      q: Can you handle payments, banking, and payouts?
+      a: Yes — end to end. Merchant accounts (Stripe, Paddle), subscription billing, App Store and Google Play payout configuration, banking details and tax forms, invoicing and revenue reporting. If you don't have a legal entity yet, we can run revenue through ours under a transparent contract until you incorporate.
+    q3:
+      q: My app was vibe-coded with Lovable, Cursor, or Bolt. Can you take it over?
+      a: Yes — that is our vibe-code rescue service. We audit the codebase, wrap the current behavior in tests, then migrate it to a scalable, type-safe architecture and onto agentic development rails — Claude Code-driven workflows with senior engineering review. Your product keeps shipping during the migration.
+    q4:
+      q: Can you scale our app to hundreds of thousands of users?
+      a: Yes. We load-test, profile, and rebuild the bottlenecks — database and caching strategy, autoscaling infrastructure, observability (logs, metrics, alerts), and cost control so the bill grows slower than the user count.
+    q5:
+      q: Do you provide ongoing technical leadership?
+      a: Yes — fractional CTO. We own architecture decisions, the technical roadmap, code quality, and security practices, and help interview your future in-house engineers. You get senior leadership without a full-time hire.
+    q6:
+      q: How is this priced?
+      a: Operations work (publishing, payments, leadership, scaling) runs on a monthly retainer scoped to your stage. One-off projects — like a vibe-code rescue or an infrastructure overhaul — are quoted as fixed-price packages, the same model as our MVP development.
+    q7:
+      q: Who owns the accounts, code, and revenue?
+      a: You do. Accounts created in your name are yours from day one. If we publish or process revenue under our entity, the contract guarantees full transfer of the app, source code, data, and accumulated revenue on request.
+    q8:
+      q: We're stuck in App Store review. Can you help?
+      a: Yes — review rejections are routine for us. We diagnose the rejection reason, fix compliance issues (privacy, entitlements, metadata), communicate with App Review, and request expedited review when justified.
+  cta:
+    title: Hand over the operations
+    description: Tell us where your product is today — prototype, stuck in review, or buckling under load. We reply within one business day with a plan.
     button: Email ivan@relux.works
 
 ecosystem:

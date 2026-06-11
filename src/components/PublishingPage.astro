@@ -1,0 +1,304 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { t, type Lang, getLocalePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const site = Astro.site ?? new URL('https://relux.works');
+const pageUrl = new URL(getLocalePath(lang, '/app-publishing/'), site).href;
+
+const offers = ['accounts', 'payments', 'rescue', 'scale'] as const;
+const faqItems = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'] as const;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: t(lang, 'publishing.hero.title'),
+  serviceType: 'App publishing, operations, and scaling',
+  description: t(lang, 'publishing.meta.description'),
+  url: pageUrl,
+  provider: { '@id': `${site.origin}/#organization` },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: t(lang, 'publishing.offers.title'),
+    itemListElement: offers.map((offer) => ({
+      '@type': 'Offer',
+      name: t(lang, `publishing.offers.${offer}.title`),
+      description: t(lang, `publishing.offers.${offer}.description`),
+      url: pageUrl,
+    })),
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: t(lang, `publishing.faq.${item}.q`),
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: t(lang, `publishing.faq.${item}.a`),
+    },
+  })),
+};
+---
+
+<Layout
+  lang={lang}
+  title={t(lang, 'publishing.meta.title')}
+  description={t(lang, 'publishing.meta.description')}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Header lang={lang} />
+
+  <main>
+    <!-- Hero -->
+    <section class="pub-hero">
+      <div class="container">
+        <span class="pub-badge">{t(lang, 'publishing.hero.badge')}</span>
+        <h1 class="pub-title">{t(lang, 'publishing.hero.title')}</h1>
+        <p class="pub-subtitle">{t(lang, 'publishing.hero.subtitle')}</p>
+        <p class="pub-intro">{t(lang, 'publishing.hero.intro')}</p>
+        <div class="pub-hero-actions">
+          <a href="#pub-contact" class="btn btn-primary">{t(lang, 'publishing.hero.cta_primary')}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'publishing.offers.title')}</h2>
+        <div class="offers-grid">
+          {offers.map((offer) => (
+            <div class="offer-card">
+              <h3 class="offer-title">{t(lang, `publishing.offers.${offer}.title`)}</h3>
+              <p class="offer-description">{t(lang, `publishing.offers.${offer}.description`)}</p>
+              <ul class="offer-features">
+                {(['f1', 'f2', 'f3', 'f4'] as const).map((f) => (
+                  <li>{t(lang, `publishing.offers.${offer}.${f}`)}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'publishing.faq.title')}</h2>
+        <div class="faq-list">
+          {faqItems.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">{t(lang, `publishing.faq.${item}.q`)}</summary>
+              <p class="faq-answer">{t(lang, `publishing.faq.${item}.a`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="pub-contact" class="section">
+      <div class="container pub-cta">
+        <h2 class="section-title">{t(lang, 'publishing.cta.title')}</h2>
+        <p class="pub-cta-description">{t(lang, 'publishing.cta.description')}</p>
+        <a href="mailto:ivan@relux.works" class="btn btn-primary">{t(lang, 'publishing.cta.button')}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  .pub-hero {
+    padding: var(--space-2xl) 0 var(--space-xl);
+    text-align: center;
+  }
+
+  .pub-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .pub-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 24ch;
+    margin: 0 auto var(--space-md);
+  }
+
+  .pub-subtitle {
+    font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
+    color: var(--color-text);
+    font-weight: 600;
+    max-width: 720px;
+    margin: 0 auto var(--space-md);
+  }
+
+  .pub-intro {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .pub-hero-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+
+  /* Offers */
+  .offers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .offer-card {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .offer-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.08);
+  }
+
+  .offer-title {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .offer-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .offer-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .offer-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .offer-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* FAQ (same pattern as MVP page) */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 860px;
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--transition-fast);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent);
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    float: right;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-answer {
+    margin-top: var(--space-sm);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  /* CTA */
+  .pub-cta {
+    text-align: center;
+  }
+
+  .pub-cta-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .offers-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

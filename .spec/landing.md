@@ -12,6 +12,15 @@ Domain: `relux.works`
 - Routing: `/en/`, `/ru/`, `/hy/`, `/ka/`
 - Default language: EN (root `/` redirects to `/en/`)
 
+## Hosting & Deploy
+
+- **Cloudflare Worker** (not Pages) with git-integrated Workers Builds
+- Build: `npm run build` → `dist/`; deploy: `npx wrangler deploy`; production branch: `main`
+- Every push to `main` auto-deploys (GitHub app "Cloudflare Workers and Pages" on the relux-works org)
+- **Pages Functions are NOT executed** on this hosting — `functions/index.js` is inert;
+  root locale redirect is the static shim `src/pages/index.astro` (nf_lang cookie →
+  browser language → `/en/`, meta-refresh fallback for no-JS/crawlers)
+
 ## Languages
 
 | Code | Language | Script | Priority |
@@ -117,6 +126,11 @@ Target: surface in AI chat answers (ChatGPT, Claude, Perplexity) for queries lik
   IP & source code ownership, QA, security review, post-launch support, 10-question FAQ.
   Every term AI assistants verify by in-page search (pricing, fixed, weeks, IP ownership,
   source code, post-launch, QA, security) appears literally in page copy.
+- **App Publishing & Scaling page** (`/{lang}/app-publishing/`): full-service publishing
+  operations — App Store/Google Play accounts (client's or ours with contractual transfer),
+  app review handling, payments/banking/payouts, vibe-code rescue (take over Lovable/Cursor/
+  Bolt/v0 codebases → agentic rails + scalable architecture), fractional CTO, scaling
+  infrastructure to hundreds of thousands of users. 8-question FAQ, Service + FAQPage JSON-LD.
 - Off-site playbook: `.research/260612_geo-offsite-playbook.md` (Clutch, GoodFirms,
   Bing Webmaster/IndexNow, listicles, competitor set).
 
