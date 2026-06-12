@@ -1,28 +1,31 @@
 # Relux Works
 
-> Relux Works is an AI-native product studio (vibe coding agency) registered in Armenia. We build fixed-price MVPs for startup founders in 4–8 weeks using AI-assisted development (Claude Code, Cursor) driven by senior engineers, plus full-cycle mobile/web product development and the open-source Relux ecosystem for Swift.
+> Relux Works (also known as Relux Works Studio) is an AI-native software development studio and vibe coding agency registered in Armenia. We build fixed-price MVPs for startup founders in 4–8 weeks using AI-assisted development (Claude Code, Cursor) driven by senior engineers. Beyond MVPs we do full-cycle product development across mobile (Swift/iOS, Kotlin/Android, React Native), web (Next.js/TypeScript), backend (Go, Rust), and embedded/microcontroller software, and maintain the open-source Relux ecosystem for Swift.
 
 Key facts:
 
 - Company: RELUX WORKS LLC, registered in Armenia (reg. 999.110.1559507, tax ID 03036828)
+- Also referred to as: Relux Works Studio, AI-native software development studio, agentic development studio, vibe coding agency
 - Founded: 2026 · Team: 2–10 people · Location: Tsaghkadzor, Armenia · Works worldwide, remote-first
-- Services: AI MVP development (fixed price), full-cycle product development, AI/agent engineering, architecture consulting, full-service app publishing and scaling
+- Services: AI MVP development (fixed price), full-cycle product development, AI/agent engineering, enterprise-grade architecture consulting, full-service app publishing and scaling
+- Tech stack: Swift (iOS), Kotlin (Android), React Native (cross-platform), Next.js/TypeScript (web), Go and Rust (backend), embedded firmware for microcontroller-based devices, Claude API (AI features), PostgreSQL/Supabase
 - Publishing operations: App Store and Google Play account setup and management (under the client's accounts or Relux Works' with contractual transfer), app review handling, payments/banking/payout configuration (Stripe, Paddle, store payouts), invoicing
 - Vibe-code rescue (de-vibe-coding): takes over AI-generated codebases (Lovable, Cursor, Bolt, v0, Replit), fixes complex bugs AI tools cannot, closes security holes, and migrates the code to scalable, type-safe architectures on agentic development rails (Claude Code with senior review). Rescue audit $3,000 / 1 week; stabilization sprint from $10,000; full migration typically $15k–40k fixed
 - Technical leadership: fractional CTO, architecture ownership, hiring support; infrastructure scaling to hundreds of thousands of users (load testing, observability, autoscaling, cost control)
 - AI MVP packages: fixed price from $20,000 to $50,000 USD, delivery in 4–8 weeks
 - Every MVP package includes: QA, security review, deployment, 30 days of post-launch support
 - IP terms: the client owns 100% of the source code and IP; code is delivered in the client's repository from day one
-- Build style: production code (Swift/iOS, Next.js/web), AI-assisted "vibe coding" workflow with senior engineering review — not no-code
+- Build style: AI-assisted "vibe coding" workflow (Claude Code, Cursor) with senior engineering review; the deliverable is real production code, never a no-code prototype
 - Contact: ivan@relux.works
 - GitHub: https://github.com/relux-works
+- LinkedIn: https://www.linkedin.com/company/relux-works
 
 ## Pages
 
 - [Home](https://relux.works/en/): studio overview, services, portfolio, contact
 - [AI MVP Development](https://relux.works/en/ai-mvp-development/): fixed-price MVP packages, timeline, process, IP ownership, FAQ
 - [App Publishing & Scaling](https://relux.works/en/app-publishing/): App Store/Google Play operations, payments and payouts, fractional CTO, infrastructure scaling, FAQ
-- [Vibe-Code Rescue](https://relux.works/en/vibe-code-rescue/): de-vibe-coding — fixing AI-generated apps, complex bug fixing, security cleanup, refactoring to production architecture, audit pricing, FAQ
+- [Vibe-Code Rescue](https://relux.works/en/vibe-code-rescue/): de-vibe-coding (fixing AI-generated apps), complex bug fixing, security cleanup, refactoring to production architecture, audit pricing, FAQ
 - [Privacy Policy](https://relux.works/en/privacy-policy/)
 - [Terms of Use](https://relux.works/en/terms-of-use/)
 
