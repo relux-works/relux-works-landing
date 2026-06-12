@@ -91,6 +91,11 @@ const faqSchema = {
                   <li>{t(lang, `publishing.offers.${offer}.${f}`)}</li>
                 ))}
               </ul>
+              {offer === 'rescue' && (
+                <a href={getLocalePath(lang, '/vibe-code-rescue/')} class="offer-more">
+                  {t(lang, 'publishing.offers.rescue.more')} →
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -231,6 +236,14 @@ const faqSchema = {
     left: 0;
     color: var(--color-accent);
     font-weight: 700;
+  }
+
+  .offer-more {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-accent);
   }
 
   /* FAQ (same pattern as MVP page) */

@@ -1,0 +1,481 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { t, type Lang, getLocalePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const site = Astro.site ?? new URL('https://relux.works');
+const pageUrl = new URL(getLocalePath(lang, '/vibe-code-rescue/'), site).href;
+
+const symptoms = ['s1', 's2', 's3', 's4', 's5'] as const;
+const services = ['audit', 'bugs', 'refactor', 'rails'] as const;
+const tiers = ['audit', 'sprint', 'full'] as const;
+const tierPrices: Record<(typeof tiers)[number], number | null> = {
+  audit: 3000,
+  sprint: 10000,
+  full: null,
+};
+const processSteps = ['w1', 'w2', 'w3', 'w4'] as const;
+const faqItems = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'] as const;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: t(lang, 'rescue.hero.title'),
+  serviceType: 'Vibe-code rescue — AI-generated code refactoring and bug fixing',
+  description: t(lang, 'rescue.meta.description'),
+  url: pageUrl,
+  provider: { '@id': `${site.origin}/#organization` },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: t(lang, 'rescue.pricing.title'),
+    itemListElement: tiers.map((tier) => ({
+      '@type': 'Offer',
+      name: t(lang, `rescue.pricing.${tier}.name`),
+      description: `${t(lang, `rescue.pricing.${tier}.description`)} (${t(lang, `rescue.pricing.${tier}.duration`)})`,
+      ...(tierPrices[tier] ? { price: tierPrices[tier], priceCurrency: 'USD' } : {}),
+      url: pageUrl,
+    })),
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: t(lang, `rescue.faq.${item}.q`),
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: t(lang, `rescue.faq.${item}.a`),
+    },
+  })),
+};
+---
+
+<Layout lang={lang} title={t(lang, 'rescue.meta.title')} description={t(lang, 'rescue.meta.description')}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Header lang={lang} />
+
+  <main>
+    <!-- Hero -->
+    <section class="rescue-hero">
+      <div class="container">
+        <span class="rescue-badge">{t(lang, 'rescue.hero.badge')}</span>
+        <h1 class="rescue-title">{t(lang, 'rescue.hero.title')}</h1>
+        <p class="rescue-subtitle">{t(lang, 'rescue.hero.subtitle')}</p>
+        <p class="rescue-intro">{t(lang, 'rescue.hero.intro')}</p>
+        <div class="rescue-hero-actions">
+          <a href="#rescue-contact" class="btn btn-primary">{t(lang, 'rescue.hero.cta_primary')}</a>
+          <a href="#rescue-process" class="btn btn-outline">{t(lang, 'rescue.hero.cta_secondary')}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Symptoms -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'rescue.symptoms.title')}</h2>
+        <ul class="symptoms-list">
+          {symptoms.map((s) => (
+            <li class="symptom-item">{t(lang, `rescue.symptoms.${s}`)}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'rescue.services.title')}</h2>
+        <div class="rescue-grid">
+          {services.map((s) => (
+            <div class="rescue-card">
+              <h3 class="rescue-card-title">{t(lang, `rescue.services.${s}.title`)}</h3>
+              <p class="rescue-card-description">{t(lang, `rescue.services.${s}.description`)}</p>
+              <ul class="rescue-features">
+                {(['f1', 'f2', 'f3'] as const).map((f) => (
+                  <li>{t(lang, `rescue.services.${s}.${f}`)}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'rescue.pricing.title')}</h2>
+        <p class="section-subtitle">{t(lang, 'rescue.pricing.subtitle')}</p>
+        <div class="rescue-pricing-grid">
+          {tiers.map((tier) => (
+            <div class="rescue-price-card">
+              <h3 class="rescue-price-name">{t(lang, `rescue.pricing.${tier}.name`)}</h3>
+              <div class="rescue-price-value">{t(lang, `rescue.pricing.${tier}.price`)}</div>
+              <div class="rescue-price-duration">{t(lang, `rescue.pricing.${tier}.duration`)}</div>
+              <p class="rescue-price-description">{t(lang, `rescue.pricing.${tier}.description`)}</p>
+            </div>
+          ))}
+        </div>
+        <p class="rescue-pricing-note">{t(lang, 'rescue.pricing.note')}</p>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="rescue-process" class="section">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'rescue.process.title')}</h2>
+        <ol class="process-list">
+          {processSteps.map((step, i) => (
+            <li class="process-step">
+              <span class="process-number">{i + 1}</span>
+              <div>
+                <h3 class="process-title">{t(lang, `rescue.process.${step}.title`)}</h3>
+                <p class="process-description">{t(lang, `rescue.process.${step}.description`)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">{t(lang, 'rescue.faq.title')}</h2>
+        <div class="faq-list">
+          {faqItems.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">{t(lang, `rescue.faq.${item}.q`)}</summary>
+              <p class="faq-answer">{t(lang, `rescue.faq.${item}.a`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="rescue-contact" class="section">
+      <div class="container rescue-cta">
+        <h2 class="section-title">{t(lang, 'rescue.cta.title')}</h2>
+        <p class="rescue-cta-description">{t(lang, 'rescue.cta.description')}</p>
+        <a href="mailto:ivan@relux.works" class="btn btn-primary">{t(lang, 'rescue.cta.button')}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  .rescue-hero {
+    padding: var(--space-2xl) 0 var(--space-xl);
+    text-align: center;
+  }
+
+  .rescue-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .rescue-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 22ch;
+    margin: 0 auto var(--space-md);
+  }
+
+  .rescue-subtitle {
+    font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
+    color: var(--color-text);
+    font-weight: 600;
+    max-width: 720px;
+    margin: 0 auto var(--space-md);
+  }
+
+  .rescue-intro {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 760px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .rescue-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+
+  /* Symptoms */
+  .symptoms-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 780px;
+  }
+
+  .symptom-item {
+    position: relative;
+    padding: var(--space-md) var(--space-lg) var(--space-md) 3rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .symptom-item::before {
+    content: '✗';
+    position: absolute;
+    left: var(--space-lg);
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* Services */
+  .rescue-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .rescue-card {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .rescue-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.08);
+  }
+
+  .rescue-card-title {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .rescue-card-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .rescue-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .rescue-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .rescue-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* Pricing */
+  .rescue-pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .rescue-price-card {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .rescue-price-name {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .rescue-price-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .rescue-price-duration {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin: var(--space-xs) 0 var(--space-sm);
+  }
+
+  .rescue-price-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .rescue-pricing-note {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  /* Process (same pattern as MVP page) */
+  .process-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 780px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .process-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+  }
+
+  .process-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .process-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 860px;
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--transition-fast);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent);
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    float: right;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-answer {
+    margin-top: var(--space-sm);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  /* CTA */
+  .rescue-cta {
+    text-align: center;
+  }
+
+  .rescue-cta-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .rescue-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rescue-pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

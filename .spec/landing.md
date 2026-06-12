@@ -131,6 +131,11 @@ Target: surface in AI chat answers (ChatGPT, Claude, Perplexity) for queries lik
   app review handling, payments/banking/payouts, vibe-code rescue (take over Lovable/Cursor/
   Bolt/v0 codebases → agentic rails + scalable architecture), fractional CTO, scaling
   infrastructure to hundreds of thousands of users. 8-question FAQ, Service + FAQPage JSON-LD.
+- **Vibe-Code Rescue page** (`/{lang}/vibe-code-rescue/`): de-vibe-coding landing for
+  pain-point queries ("fix my Lovable app", "AI can't fix my bug", "vibe coded app technical
+  debt"). Symptoms list, 4 service blocks (rescue audit / complex bug fixing / refactor to
+  production / agentic rails), pricing (audit $3k draft, sprint from $10k, full $15k–40k —
+  owner must confirm), process, 9-question FAQ, Service + FAQPage JSON-LD.
 - Off-site playbook: `.research/260612_geo-offsite-playbook.md` (Clutch, GoodFirms,
   Bing Webmaster/IndexNow, listicles, competitor set).
 
