@@ -2,8 +2,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: 'https://relux.works',
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ru', 'hy', 'ka'],
@@ -12,6 +15,7 @@ export default defineConfig({
       redirectToDefaultLocale: false,
     },
   },
+
   integrations: [
     sitemap({
       // root "/" is a redirect shim, not content
@@ -27,4 +31,6 @@ export default defineConfig({
       },
     }),
   ],
+
+  adapter: cloudflare()
 });
